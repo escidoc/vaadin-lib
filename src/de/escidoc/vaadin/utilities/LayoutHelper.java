@@ -186,7 +186,6 @@ public class LayoutHelper {
         String label, Component comp, String width, int height,
         boolean required, Button[] buttons) {
         HorizontalLayout hor = new HorizontalLayout();
-        // hor.setHeight("30px");
         hor.setHeight(height + "px");
         hor.addComponent(new Label(" "));
         String text = "<p align=\"right\">" + label + "</p>";
@@ -209,6 +208,7 @@ public class LayoutHelper {
         hor.addComponent(comp);
         hor.setComponentAlignment(comp, Alignment.MIDDLE_RIGHT);
         hor.addComponent(new Label(" "));
+
         VerticalLayout vl = new VerticalLayout();
         int count = buttons.length;
         // TODO: Place the buttons centered ....
