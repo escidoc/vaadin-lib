@@ -52,7 +52,7 @@ public class LayoutHelper {
      *         afterwards is inserted.
      */
     public static synchronized HorizontalLayout create(
-        String label, Component comp, String width, boolean required) {
+        String label, Component comp, int width, boolean required) {
         HorizontalLayout hor = new HorizontalLayout();
         hor.setHeight("30px");
         hor.addComponent(new Label(" "));
@@ -60,7 +60,7 @@ public class LayoutHelper {
         Label l;
         hor.addComponent(l = new Label(text, Label.CONTENT_XHTML));
         l.setSizeUndefined();
-        l.setWidth(width);
+        l.setWidth(width + "px");
         hor.setComponentAlignment(l, com.vaadin.ui.Alignment.MIDDLE_RIGHT);
 
         if (required) {
@@ -95,7 +95,7 @@ public class LayoutHelper {
      *         afterwards is inserted.
      */
     public static synchronized HorizontalLayout create(
-        String label, CheckBox comp, String width, boolean required) {
+        String label, CheckBox comp, int width, boolean required) {
         HorizontalLayout hor = new HorizontalLayout();
         hor.setHeight("30px");
         hor.addComponent(new Label(" "));
@@ -103,7 +103,7 @@ public class LayoutHelper {
         Label l;
         hor.addComponent(l = new Label(text, Label.CONTENT_XHTML));
         l.setSizeUndefined();
-        l.setWidth(width);
+        l.setWidth(width + "px");
         hor.setComponentAlignment(l, Alignment.MIDDLE_RIGHT);
 
         if (required) {
@@ -138,7 +138,7 @@ public class LayoutHelper {
      *         afterwards is inserted.
      */
     public static synchronized HorizontalLayout create(
-        String label, Component comp, String width, int height, boolean required) {
+        String label, Component comp, int width, int height, boolean required) {
         HorizontalLayout hor = new HorizontalLayout();
         // hor.setHeight("30px");
         hor.setHeight(height + "px");
@@ -147,7 +147,7 @@ public class LayoutHelper {
         Label l;
         hor.addComponent(l = new Label(text, Label.CONTENT_XHTML));
         l.setSizeUndefined();
-        l.setWidth(width);
+        l.setWidth(width + "px");
         hor.setComponentAlignment(l, Alignment.MIDDLE_RIGHT);
 
         if (required) {
@@ -183,8 +183,8 @@ public class LayoutHelper {
      *         afterwards is inserted.
      */
     public static synchronized HorizontalLayout create(
-        String label, Component comp, String width, int height,
-        boolean required, Button[] buttons) {
+        String label, Component comp, int width, int height, boolean required,
+        Button[] buttons) {
         HorizontalLayout hor = new HorizontalLayout();
         hor.setHeight(height + "px");
         hor.addComponent(new Label(" "));
@@ -192,7 +192,7 @@ public class LayoutHelper {
         Label l;
         hor.addComponent(l = new Label(text, Label.CONTENT_XHTML));
         l.setSizeUndefined();
-        l.setWidth(width);
+        l.setWidth(width + "px");
         hor.setComponentAlignment(l, Alignment.MIDDLE_RIGHT);
 
         if (required) {
@@ -242,7 +242,7 @@ public class LayoutHelper {
      *         afterwards is inserted.
      */
     public static synchronized HorizontalLayout create(
-        String label, Accordion accordion, String width, int height,
+        String label, Accordion accordion, int width, int height,
         boolean required) {
         HorizontalLayout hor = new HorizontalLayout();
         hor.setHeight(height + "px");
@@ -251,7 +251,7 @@ public class LayoutHelper {
         Label l;
         hor.addComponent(l = new Label(text, Label.CONTENT_XHTML));
         l.setSizeUndefined();
-        l.setWidth(width);
+        l.setWidth(width + "px");
         hor.setComponentAlignment(l, Alignment.MIDDLE_RIGHT);
         if (required) {
             hor
@@ -312,8 +312,7 @@ public class LayoutHelper {
      */
     public static synchronized HorizontalLayout create(
         String labelLeft, String labelRight, Component compLeft,
-        Component compRight, String widthLeft, String widthRight,
-        boolean required) {
+        Component compRight, int widthLeft, int widthRight, boolean required) {
         HorizontalLayout hor = new HorizontalLayout();
         hor.setHeight("30px");
         hor.addComponent(new Label(" "));
@@ -321,7 +320,7 @@ public class LayoutHelper {
         Label ll, lr;
         hor.addComponent(ll = new Label(text, Label.CONTENT_XHTML));
         ll.setSizeUndefined();
-        ll.setWidth(widthLeft);
+        ll.setWidth(widthLeft + "px");
         hor.setComponentAlignment(ll, Alignment.MIDDLE_RIGHT);
         if (required) {
             hor
@@ -338,7 +337,7 @@ public class LayoutHelper {
         String text2 = "<p align=\"right\">" + labelRight + "</p>";
         hor.addComponent(lr = new Label(text2, Label.CONTENT_XHTML));
         lr.setSizeUndefined();
-        lr.setWidth(widthRight);
+        lr.setWidth(widthRight + "px");
         hor.setComponentAlignment(lr, Alignment.MIDDLE_RIGHT);
         if (required) {
             hor
@@ -375,7 +374,7 @@ public class LayoutHelper {
      */
     public static synchronized HorizontalLayout create(
         String labelLeft, String labelRight, Component compLeft,
-        Component compRight, String width, boolean required) {
+        Component compRight, int width, boolean required) {
         HorizontalLayout hor = new HorizontalLayout();
         hor.setHeight("30px");
         hor.addComponent(new Label(" "));
@@ -383,7 +382,7 @@ public class LayoutHelper {
         Label ll, lr;
         hor.addComponent(ll = new Label(text, Label.CONTENT_XHTML));
         ll.setSizeUndefined();
-        ll.setWidth(width);
+        ll.setWidth(width + "px");
         hor.setComponentAlignment(ll, Alignment.MIDDLE_RIGHT);
         if (required) {
             hor
@@ -400,7 +399,7 @@ public class LayoutHelper {
         String text2 = "<p align=\"right\">" + labelRight + "</p>";
         hor.addComponent(lr = new Label(text2, Label.CONTENT_XHTML));
         lr.setSizeUndefined();
-        lr.setWidth(width);
+        lr.setWidth(width + "px");
         hor.setComponentAlignment(lr, Alignment.MIDDLE_RIGHT);
         if (required) {
             hor
@@ -555,27 +554,27 @@ public class LayoutHelper {
 
     public static synchronized void addElement(
         final FormLayout form, final AbstractComponent comp,
-        final String label, final String labelWidth, final String width,
+        final String label, final int labelWidth, final int width,
         final int height, final boolean required) {
-        comp.setWidth(width);
+        comp.setWidth(width + "px");
         form.addComponent(LayoutHelper.create(label, comp, labelWidth, height,
             required));
     }
 
     public static synchronized void addElement(
         final FormLayout form, final AbstractComponent comp,
-        final String label, final String labelWidth, final String width,
+        final String label, final int labelWidth, final int width,
         final int height, final boolean required, Button[] buttons) {
-        comp.setWidth(width);
+        comp.setWidth(width + "px");
         form.addComponent(LayoutHelper.create(label, comp, labelWidth, height,
             required, buttons));
     }
 
     public static synchronized void addElement(
         final FormLayout form, final AbstractComponent comp,
-        final String label, final String labelWidth, final String width,
+        final String label, final int labelWidth, final int width,
         final boolean required) {
-        comp.setWidth(width);
+        comp.setWidth(width + "px");
         form.addComponent(LayoutHelper
             .create(label, comp, labelWidth, required));
 
