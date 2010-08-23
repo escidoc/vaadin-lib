@@ -207,16 +207,17 @@ public class LayoutHelper {
         }
         hor.addComponent(comp);
         hor.setComponentAlignment(comp, Alignment.MIDDLE_RIGHT);
-        hor.addComponent(new Label(" "));
+        hor.addComponent(new Label(" &nbsp; ", Label.CONTENT_XHTML));
 
         VerticalLayout vl = new VerticalLayout();
         int count = buttons.length;
         // TODO: Place the buttons centered ....
         int numberOfElements = height / 22;
         int indent = (numberOfElements - count) / 2;
-        // indent++;
+        indent++;
         for (int i = 0; i < indent; i++) {
             vl.addComponent(new Label("&nbsp;", Label.CONTENT_XHTML));
+            // vl.addComponent(new Label(" ", Label.CONTENT_XHTML));
         }
         for (Button b : buttons) {
             vl.addComponent(b);
