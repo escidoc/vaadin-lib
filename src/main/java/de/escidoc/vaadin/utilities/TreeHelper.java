@@ -1,6 +1,3 @@
-/**
- * 
- */
 package de.escidoc.vaadin.utilities;
 
 import com.vaadin.ui.Tree;
@@ -25,7 +22,8 @@ public class TreeHelper {
      * @return
      */
     public static synchronized Object addChildren(
-        final Tree tree, Object parent, Object child, boolean childrenAllowed) {
+        final Tree tree, final Object parent, final Object child,
+        final boolean childrenAllowed) {
         tree.addItem(child);
         tree.setParent(child, parent);
         tree.setChildrenAllowed(child, childrenAllowed);
@@ -34,9 +32,26 @@ public class TreeHelper {
     }
 
     public static synchronized Object addChildren(
-        final Tree tree, Object child, boolean childrenAllowed) {
+        final Tree tree, final Object child, final boolean childrenAllowed) {
         tree.addItem(child);
         tree.setChildrenAllowed(child, childrenAllowed);
         return child;
     }
+
+    public static synchronized Object addRoot(
+        final Tree tree, final Object child, final boolean childrenAllowed) {
+        tree.addItem(child);
+        tree.setChildrenAllowed(child, childrenAllowed);
+        return child;
+    }
+
+    public static synchronized Object addChildrenNotExpand(
+        final Tree tree, final Object parent, final Object child,
+        final boolean childrenAllowed) {
+        tree.addItem(child);
+        tree.setParent(child, parent);
+        tree.setChildrenAllowed(child, childrenAllowed);
+        return child;
+    }
+
 }
