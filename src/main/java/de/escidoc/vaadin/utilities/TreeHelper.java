@@ -33,4 +33,10 @@ public class TreeHelper {
         return child;
     }
 
+    public static synchronized Object addChildren(
+        final Tree tree, Object child, boolean childrenAllowed) {
+        tree.addItem(child);
+        tree.setChildrenAllowed(child, childrenAllowed);
+        return child;
+    }
 }
