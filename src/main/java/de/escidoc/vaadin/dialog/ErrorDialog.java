@@ -13,8 +13,39 @@ public class ErrorDialog extends Window {
 
     private final FormLayout layout = new FormLayout();
 
+    /**
+     * Displays an error message dialog to the customer.
+     * 
+     * @param mainWindow
+     *            the main window of the application.
+     * @param caption
+     *            the headline.
+     * @param errorMessage
+     *            the message, describing what went wrong.
+     */
     public ErrorDialog(final Window mainWindow, final String caption,
         final String errorMessage) {
+        this(mainWindow, caption, errorMessage, 600, 300);
+    }
+
+    /**
+     * Displays an error message dialog to the customer.
+     * 
+     * @param mainWindow
+     *            the main window of the application.
+     * @param caption
+     *            the headline.
+     * @param errorMessage
+     *            the message, describing what went wrong.
+     * @param width
+     *            the width of the window.
+     * @param height
+     *            the height of the window.
+     */
+    public ErrorDialog(final Window mainWindow, final String caption,
+        final String errorMessage, int width, int height) {
+        super.setWidth("600px");
+        super.setHeight("300px");
         super.setCaption(caption);
         super.setModal(true);
         layout.addComponent(LayoutHelper.create("", new Label(errorMessage),
