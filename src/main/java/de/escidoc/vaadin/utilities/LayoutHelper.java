@@ -182,7 +182,7 @@ public class LayoutHelper {
      * @return The component in an horizontal layout. A blank in front and
      *         afterwards is inserted.
      */
-    public static synchronized HorizontalLayout create(
+    public static synchronized VerticalLayout create(
         String label, Component comp, int width, int height, boolean required,
         Button[] buttons) {
         HorizontalLayout hor = new HorizontalLayout();
@@ -210,21 +210,32 @@ public class LayoutHelper {
         hor.addComponent(new Label(" &nbsp; ", Label.CONTENT_XHTML));
 
         VerticalLayout vl = new VerticalLayout();
-        int count = buttons.length;
-        // TODO: Place the buttons centered ....
-        int numberOfElements = height / 22;
-        int indent = (numberOfElements - count) / 2;
-        indent++;
-        for (int i = 0; i < indent; i++) {
-            vl.addComponent(new Label("&nbsp;", Label.CONTENT_XHTML));
-            // vl.addComponent(new Label(" ", Label.CONTENT_XHTML));
-        }
+        vl.addComponent(hor);
+        // VerticalLayout vl = new VerticalLayout();
+        // int count = buttons.length;
+        // // TODO: Place the buttons centered ....
+        // int numberOfElements = height / 22;
+        // int indent = (numberOfElements - count) / 2;
+        // indent++;
+        // for (int i = 0; i < indent; i++) {
+        // vl.addComponent(new Label("&nbsp;", Label.CONTENT_XHTML));
+        // // vl.addComponent(new Label(" ", Label.CONTENT_XHTML));
+        // }
+        // for (Button b : buttons) {
+        // vl.addComponent(b);
+        // }
+        // hor.addComponent(vl);
+        HorizontalLayout hl = new HorizontalLayout();
+        Label la = new Label("&nbsp;", Label.CONTENT_XHTML);
+        la.setSizeUndefined();
+        la.setWidth(width + "px");
+        hl.addComponent(la);
         for (Button b : buttons) {
-            vl.addComponent(b);
+            hl.addComponent(b);
         }
-        hor.addComponent(vl);
+        vl.addComponent(hl);
         hor.setSpacing(false);
-        return hor;
+        return vl;
     }
 
     /**
@@ -340,6 +351,51 @@ public class LayoutHelper {
         lr.setSizeUndefined();
         lr.setWidth(widthRight + "px");
         hor.setComponentAlignment(lr, Alignment.MIDDLE_RIGHT);
+        if (required) {
+            hor
+                .addComponent(new Label(
+                    "&nbsp;<span style=\"color:red; position:relative; top:13px;\">*</span>",
+                    Label.CONTENT_XHTML));
+        }
+        else {
+            hor.addComponent(new Label("&nbsp;&nbsp;", Label.CONTENT_XHTML));
+        }
+        hor.addComponent(compRight);
+        hor.setComponentAlignment(compRight, Alignment.MIDDLE_RIGHT);
+        hor.addComponent(new Label(" "));
+        hor.setSpacing(false);
+        return hor;
+    }
+
+    public static synchronized HorizontalLayout create(
+        String labelLeft, String labelRight, Label compLeft, Label compRight,
+        int widthLeft, int widthRight, boolean required) {
+        HorizontalLayout hor = new HorizontalLayout();
+        hor.setHeight("30px");
+        hor.addComponent(new Label(" "));
+        String text = "<p align=\"right\">" + labelLeft + "</p>";
+        Label ll, lr;
+        hor.addComponent(ll = new Label(text, Label.CONTENT_XHTML));
+        ll.setSizeUndefined();
+        ll.setWidth(widthLeft + "px");
+        hor.setComponentAlignment(ll, Alignment.MIDDLE_RIGHT);
+        if (required) {
+            hor
+                .addComponent(new Label(
+                    "&nbsp;<span style=\"color:red; position:relative; top:13px;\">*</span>",
+                    Label.CONTENT_XHTML));
+        }
+        else {
+            hor.addComponent(new Label("&nbsp;&nbsp;", Label.CONTENT_XHTML));
+        }
+        hor.addComponent(compLeft);
+        hor.setComponentAlignment(compLeft, Alignment.BOTTOM_RIGHT);
+        hor.addComponent(new Label("&nbsp;", Label.CONTENT_XHTML));
+        String text2 = "<p align=\"right\">" + labelRight + "</p>";
+        hor.addComponent(lr = new Label(text2, Label.CONTENT_XHTML));
+        lr.setSizeUndefined();
+        lr.setWidth(widthRight + "px");
+        hor.setComponentAlignment(lr, Alignment.BOTTOM_RIGHT);
         if (required) {
             hor
                 .addComponent(new Label(
@@ -517,7 +573,7 @@ public class LayoutHelper {
 
     public static synchronized AbstractComponent createDateElement(
         final String className, final POJOItem<?> item, final boolean readOnly,
-        final String propertyName) {
+        final String propertyName, int resolution) {
         AbstractComponent comp;
         if (readOnly) {
             comp = new Label();
@@ -526,6 +582,7 @@ public class LayoutHelper {
         }
         else {
             comp = new DateField();
+            ((DateField) comp).setResolution(resolution);
             ((DateField) comp).setWriteThrough(false);
             ((DateField) comp).setPropertyDataSource(item
                 .getItemProperty(propertyName));
