@@ -28,6 +28,8 @@ import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.themes.Reindeer;
 
+import de.escidoc.vaadin.interfaces.IMenuItem;
+
 /**
  * @author ASP
  * 
@@ -539,6 +541,60 @@ public class LayoutHelper {
         else {
             comp = new Select();
             for (final String theItem : values) {
+                ((Select) comp).addItem(theItem);
+            }
+            ((Select) comp).setWriteThrough(false);
+            ((Select) comp).setPropertyDataSource(item
+                .getItemProperty(propertyName));
+            List<Field> attachedFields = attachedFieldsMap.get(className);
+            if (attachedFields == null) {
+                attachedFields = new ArrayList<Field>();
+                attachedFieldsMap.put(className, attachedFields);
+            }
+            attachedFields.add((Field) comp);
+        }
+        return comp;
+    }
+
+    public static synchronized AbstractComponent createSelectElement(
+        final String className, final POJOItem<?> item, final boolean readOnly,
+        final String propertyName, final Enum<?>[] values) {
+        AbstractComponent comp;
+        if (readOnly) {
+            comp = new Label();
+            ((Label) comp).setPropertyDataSource(item
+                .getItemProperty(propertyName));
+        }
+        else {
+            comp = new Select();
+            for (final Enum theItem : values) {
+                ((Select) comp).addItem(theItem);
+            }
+            ((Select) comp).setWriteThrough(false);
+            ((Select) comp).setPropertyDataSource(item
+                .getItemProperty(propertyName));
+            List<Field> attachedFields = attachedFieldsMap.get(className);
+            if (attachedFields == null) {
+                attachedFields = new ArrayList<Field>();
+                attachedFieldsMap.put(className, attachedFields);
+            }
+            attachedFields.add((Field) comp);
+        }
+        return comp;
+    }
+
+    public static synchronized AbstractComponent createSelectElement(
+        final String className, final POJOItem<?> item, final boolean readOnly,
+        final String propertyName, final IMenuItem[] values) {
+        AbstractComponent comp;
+        if (readOnly) {
+            comp = new Label();
+            ((Label) comp).setPropertyDataSource(item
+                .getItemProperty(propertyName));
+        }
+        else {
+            comp = new Select();
+            for (final IMenuItem theItem : values) {
                 ((Select) comp).addItem(theItem);
             }
             ((Select) comp).setWriteThrough(false);
