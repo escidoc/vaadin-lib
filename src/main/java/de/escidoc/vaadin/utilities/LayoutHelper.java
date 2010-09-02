@@ -655,8 +655,7 @@ public class LayoutHelper {
     public static synchronized AbstractComponent createCheckBoxElement(
         final String className, final POJOItem<?> item, final boolean readOnly,
         final String text, final String propertyName) {
-        AbstractComponent comp;
-        comp = new CheckBox(text);
+        AbstractComponent comp = new CheckBox(text);
         comp.setReadOnly(readOnly);
         ((CheckBox) comp).setWriteThrough(false);
         ((CheckBox) comp).setPropertyDataSource(item
