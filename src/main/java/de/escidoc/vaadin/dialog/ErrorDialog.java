@@ -44,8 +44,8 @@ public class ErrorDialog extends Window {
      */
     public ErrorDialog(final Window mainWindow, final String caption,
         final String errorMessage, int width, int height) {
-        super.setWidth("600px");
-        super.setHeight("300px");
+        super.setWidth(width + "px");
+        super.setHeight(height + "px");
         super.setCaption(caption);
         super.setModal(true);
         layout.addComponent(LayoutHelper.create("", new Label(errorMessage),
