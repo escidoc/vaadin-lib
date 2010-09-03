@@ -19,27 +19,65 @@ public interface IMenuItem {
      */
     public String getObjectId();
 
+    /**
+     * @param The
+     *            unique ObjectId.
+     */
     public void setObjectId(String objId);
 
     /**
-     * @return The name of the instrumemnt.
+     * @return The name of the item.
      */
     public String getName();
 
+    /**
+     * @return Who created the item.
+     */
     public String getCreatedBy();
 
+    /**
+     * @param createdBy
+     *            Sets who created the item.
+     */
     public void setCreatedBy(String createdBy);
 
+    /**
+     * 
+     * @return When was the item created.
+     */
     public Date getCreatedOn();
 
+    /**
+     * 
+     * @param createdOn
+     *            Sets when the item was created.
+     */
     public void setCreatedOn(Date createdOn);
 
+    /**
+     * 
+     * @return Who modified the item the last time.
+     */
     public String getModifiedBy();
 
+    /**
+     * 
+     * @param modifiedBy
+     *            Sets who modified the item the last time.
+     */
     public void setModifiedBy(String modifiedBy);
 
+    /**
+     * 
+     * @return When was the item the last time modified.
+     */
     public Date getModifiedOn();
 
+    /**
+     * 
+     * @param modifiedBy
+     *            Sets when the item was modified the last time.
+     */
     public void setModifiedOn(Date modifiedOn);
 
     /**
