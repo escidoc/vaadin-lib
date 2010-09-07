@@ -20,8 +20,8 @@ public interface IMenuItem {
     public String getObjectId();
 
     /**
-     * @param The
-     *            unique ObjectId.
+     * @param objId
+     *            The unique ObjectId.
      */
     public void setObjectId(String objId);
 
@@ -75,7 +75,7 @@ public interface IMenuItem {
 
     /**
      * 
-     * @param modifiedBy
+     * @param modifiedOn
      *            Sets when the item was modified the last time.
      */
     public void setModifiedOn(Date modifiedOn);
