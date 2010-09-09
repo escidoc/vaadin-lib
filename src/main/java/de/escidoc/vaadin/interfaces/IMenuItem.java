@@ -7,6 +7,7 @@ import java.util.Date;
 
 import com.vaadin.event.Action;
 
+import de.escidoc.core.resources.om.container.Container;
 import de.escidoc.core.resources.om.item.Item;
 
 /**
@@ -95,4 +96,10 @@ public interface IMenuItem {
      */
     public Item toItem();
 
+    /**
+     * Converts the content of the bean to a <code>container</code>.
+     * 
+     * @return the result of the conversion.
+     */
+    public Container toContainer();
 }
