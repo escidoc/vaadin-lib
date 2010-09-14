@@ -567,7 +567,7 @@ public class LayoutHelper {
         }
         else {
             comp = new Select();
-            for (final Enum theItem : values) {
+            for (final Enum<?> theItem : values) {
                 ((Select) comp).addItem(theItem);
             }
             ((Select) comp).setWriteThrough(false);
