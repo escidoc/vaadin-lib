@@ -71,16 +71,16 @@
 	</issueManagement>
 	<ciManagement>
 		<system>Hudson</system>
-		<url>http://escidev5:8484/</url>
+		<url>http://escidev5:8484/VaadinLib</url>
 	</ciManagement>
-	<scm>
-		<url>http://escidev5:8888/prototyp/trunk/VaadinLib</url>
-	</scm>
 	<organization>
 		<name>Fiz Karlsruhe</name>
 		<url>http://www.fiz-karlsruhe.de</url>
 	</organization>
-
+	<scm>
+		<connection>scm:svn:http://escidev5:8888/prototyp/trunk/VaadinLib</connection>
+		<developerConnection>scm:svn:http://escidev5:8888/prototyp/trunk/VaadinLib</developerConnection>
+	</scm>
 
 	<distributionManagement>
 		<repository>
@@ -108,6 +108,7 @@
 				</configuration>
 			</plugin>
 			<!-- Creating a release number.... -->
+<!-- 
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>buildnumber-maven-plugin</artifactId>
@@ -122,12 +123,13 @@
 				</executions>
 				<configuration>
 					<doCheck>true</doCheck>
-					<!-- TODO: connection to SVN is still in jeopardy.... -->
+					< ! - - TODO: connection to SVN is still in jeopardy.... - - >
 					<doUpdate>false</doUpdate>
 				</configuration>
 			</plugin>
+ -->			
 		</plugins>
-		<finalName>${project.artifactId}${Major}.${Minor}.${Release}.-b${buildNumber}</finalName>
+		<finalName>${project.artifactId}-${Major}.${Minor}.${Release}-b${BUILD_NUMBER}</finalName>
 	</build>
 	<!-- JavaDoc, Site information generation -->
 	<reporting>
