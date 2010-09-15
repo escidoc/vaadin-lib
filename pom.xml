@@ -7,50 +7,80 @@
 	<name>VaadinLib</name>
 	<url>http://maven.apache.org</url>
 	<description>A library with helper classes and interface for a much more simpler usage of vaadin.</description>
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<Major>0</Major>
 		<Minor>0</Minor>
 		<Release>1</Release>
 	</properties>
+
+	<repositories>
+		<repository>
+			<id>escidoc</id>
+			<url>https://www.escidoc.org/artifactory/repo</url>
+		</repository>
+		<repository>
+			<id>vaadin-addons</id>
+			<url>http://maven.vaadin.com/vaadin-addons</url>
+		</repository>
+	</repositories>
+
 	<dependencies>
+		<dependency>
+			<groupId>org.vaadin.addons</groupId>
+			<artifactId>pojo-container</artifactId>
+			<version>0.1.0</version>
+		</dependency>
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 			<version>1.2.13</version>
 		</dependency>
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.8.2</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
 			<groupId>com.vaadin</groupId>
 			<artifactId>vaadin</artifactId>
 			<version>6.4.0</version>
+			<type>jar</type>
 		</dependency>
 		<dependency>
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
 			<version>1.5.2</version>
+			<type>jar</type>
 		</dependency>
 		<dependency>
-			<groupId>POJOContainer</groupId>
-			<artifactId>POJOContainer</artifactId>
-			<version>0.1.0</version>
+			<groupId>org.escidoc.core</groupId>
+			<artifactId>client-1.2</artifactId>
+			<version>build194</version>
+			<type>jar</type>
 		</dependency>
+		
+		<!-- tests -->
 		<dependency>
-			<groupId>escidoc-core-1.2-client-lib-build</groupId>
-			<artifactId>HEAD</artifactId>
-			<version>1.2</version>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.8.1</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
+	<issueManagement>
+		<system>Jira</system>
+		<url>https://www.escidoc.org/jira</url>
+	</issueManagement>
+	<ciManagement>
+		<system>Hudson</system>
+		<url>http://escidev5:8484/</url>
+	</ciManagement>
 	<scm>
 		<connection>scm:svn:http://escidev5:8888/prototyp/trunk/VaadinLib</connection>
 		<developerConnection>scm:svn:http://escidev5:8888/prototyp/trunk/VaadinLib</developerConnection>
 	</scm>
+	<organization>
+		<name>Fiz Karlsruhe</name>
+		<url>http://www.fiz-karlsruhe.de</url>
+	</organization>
 	<build>
 		<plugins>
 			<plugin>
