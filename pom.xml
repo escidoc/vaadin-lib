@@ -124,7 +124,7 @@
 				<configuration>
 					<doCheck>true</doCheck>
 					<!-- TODO: connection to SVN is still in jeopardy.... -->
-					<doUpdate></doUpdate>
+					<doUpdate>false</doUpdate>
 				</configuration>
 			</plugin>
 		</plugins>
