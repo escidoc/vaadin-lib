@@ -74,8 +74,7 @@
 		<url>http://escidev5:8484/</url>
 	</ciManagement>
 	<scm>
-		<connection>scm:svn:http://escidev5:8888/prototyp/trunk/VaadinLib</connection>
-		<developerConnection>scm:svn:http://escidev5:8888/prototyp/trunk/VaadinLib</developerConnection>
+		<url>http://escidev5:8888/prototyp/trunk/VaadinLib</url>
 	</scm>
 	<organization>
 		<name>Fiz Karlsruhe</name>
