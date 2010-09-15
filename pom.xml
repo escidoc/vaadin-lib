@@ -55,7 +55,7 @@
 			<version>build194</version>
 			<type>jar</type>
 		</dependency>
-		
+
 		<!-- tests -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -81,6 +81,22 @@
 		<name>Fiz Karlsruhe</name>
 		<url>http://www.fiz-karlsruhe.de</url>
 	</organization>
+
+
+	<distributionManagement>
+		<repository>
+			<id>escidoc.org</id>
+			<name>escidoc.org-releases</name>
+			<url>https://www.escidoc.org/artifactory/libs-releases-local</url>
+		</repository>
+		<snapshotRepository>
+			<id>escidoc.org</id>
+			<name>escidoc.org-snapshots</name>
+			<url>https://www.escidoc.org/artifactory/libs-snapshots-local</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+
 	<build>
 		<plugins>
 			<plugin>
@@ -108,7 +124,7 @@
 				<configuration>
 					<doCheck>true</doCheck>
 					<!-- TODO: connection to SVN is still in jeopardy.... -->
-					<doUpdate>false</doUpdate>
+					<doUpdate></doUpdate>
 				</configuration>
 			</plugin>
 		</plugins>
