@@ -7,9 +7,6 @@ import java.util.Date;
 
 import com.vaadin.event.Action;
 
-import de.escidoc.core.resources.om.container.Container;
-import de.escidoc.core.resources.om.item.Item;
-
 /**
  * @author ASP
  * 
@@ -86,20 +83,36 @@ public interface IMenuItem {
      */
     public Action[] getActions();
 
-    /** Displays the content of this bean. */
-    public void debug();
+    /**
+     * 
+     * @return an id for the used content model.
+     */
+    public String getContentModel();
 
     /**
-     * Converts the content of the bean to an <code>item</code>.
      * 
-     * @return the result of the conversion.
+     * @param an
+     *            id for the used content model.
      */
-    public Item toItem();
+    public void setContentModel(String id);
 
     /**
-     * Converts the content of the bean to a <code>container</code>.
      * 
-     * @return the result of the conversion.
+     * @return an id for the used context.
      */
-    public Container toContainer();
+    public String getContext();
+
+    /**
+     * 
+     * @param an
+     *            id for the used context.
+     */
+    public void setContext(String id);
+
+    /**
+     * A unique identifier for determining the EscidocReference id.
+     * 
+     * @return a String matching a key in the constants definition.
+     */
+    public String getReferenceType();
 }
