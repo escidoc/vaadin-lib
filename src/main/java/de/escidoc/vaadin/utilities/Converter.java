@@ -42,7 +42,7 @@ public class Converter {
         if (o instanceof Set) {
             selected.addAll((Set) o); // More than one result...
         }
-        else if (o instanceof Object) { // Just one selected.
+        else { // Just one selected.
             selected.add(o);
         }
         return selected;
