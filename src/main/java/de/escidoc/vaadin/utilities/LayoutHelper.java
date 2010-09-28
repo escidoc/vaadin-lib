@@ -28,6 +28,7 @@ import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.themes.Reindeer;
 
+import de.escidoc.vaadin.Constants;
 import de.escidoc.vaadin.interfaces.IMenuItem;
 
 /**
@@ -35,6 +36,11 @@ import de.escidoc.vaadin.interfaces.IMenuItem;
  * 
  */
 public class LayoutHelper {
+
+    private LayoutHelper() {
+        // Utility classes should not have a public or default constructor.
+    }
+
     private final static Map<String, List<Field>> attachedFieldsMap =
         new HashMap<String, List<Field>>();
 
@@ -42,27 +48,27 @@ public class LayoutHelper {
      * Helper method. Puts a blank in front of a component.
      * 
      * @param label
-     *            The label in front of the controll.
+     *            The label in front of the control.
      * @param comp
      *            The component to display.
      * @param width
-     *            the fixed size of the label. The parameter has to be in css
+     *            the fixed size of the label. The parameter has to be in CSS
      *            style, i.e. 400px for instance.
      * @param required
-     *            should it be marked with an asterix.
+     *            should it be marked with an asterisk.
      * @return The component in an horizontal layout. A blank in front and
      *         afterwards is inserted.
      */
     public static synchronized HorizontalLayout create(
         String label, Component comp, int width, boolean required) {
         HorizontalLayout hor = new HorizontalLayout();
-        hor.setHeight("30px");
+        hor.setHeight(Constants.DEFAULT_HEIGHT);
         hor.addComponent(new Label(" "));
-        String text = "<p align=\"right\">" + label + "</p>";
+        String text = Constants.P_ALIGN_RIGHT + label + Constants.P;
         Label l;
         hor.addComponent(l = new Label(text, Label.CONTENT_XHTML));
         l.setSizeUndefined();
-        l.setWidth(width + "px");
+        l.setWidth(width + Constants.PX);
         hor.setComponentAlignment(l, com.vaadin.ui.Alignment.MIDDLE_RIGHT);
 
         if (required) {
@@ -85,27 +91,27 @@ public class LayoutHelper {
      * Helper method. Puts a blank in front of a component.
      * 
      * @param label
-     *            The label in front of the controll.
+     *            The label in front of the control.
      * @param comp
      *            The component to display.
      * @param width
-     *            the fixed size of the label. The parameter has to be in css
+     *            the fixed size of the label. The parameter has to be in CSS
      *            style, i.e. 400px for instance.
      * @param required
-     *            should it be marked with an asterix.
+     *            should it be marked with an asterisk.
      * @return The component in an horizontal layout. A blank in front and
      *         afterwards is inserted.
      */
     public static synchronized HorizontalLayout create(
         String label, CheckBox comp, int width, boolean required) {
         HorizontalLayout hor = new HorizontalLayout();
-        hor.setHeight("30px");
+        hor.setHeight(Constants.DEFAULT_HEIGHT);
         hor.addComponent(new Label(" "));
-        String text = "<p align=\"right\">" + label + "</p>";
+        String text = Constants.P_ALIGN_RIGHT + label + Constants.P;
         Label l;
         hor.addComponent(l = new Label(text, Label.CONTENT_XHTML));
         l.setSizeUndefined();
-        l.setWidth(width + "px");
+        l.setWidth(width + Constants.PX);
         hor.setComponentAlignment(l, Alignment.MIDDLE_RIGHT);
 
         if (required) {
@@ -128,14 +134,16 @@ public class LayoutHelper {
      * Helper method. Puts a blank in front of a component.
      * 
      * @param label
-     *            The label in front of the controll.
+     *            The label in front of the control.
      * @param comp
      *            The component to display.
      * @param width
-     *            the fixed size of the label. The parameter has to be in css
+     *            the fixed size of the label. The parameter has to be in CSS
      *            style, i.e. 400px for instance.
+     * @param height
+     *            the height of the layout
      * @param required
-     *            should it be marked with an asterix.
+     *            should it be marked with an asterisk.
      * @return The component in an horizontal layout. A blank in front and
      *         afterwards is inserted.
      */
@@ -143,13 +151,13 @@ public class LayoutHelper {
         String label, Component comp, int width, int height, boolean required) {
         HorizontalLayout hor = new HorizontalLayout();
         // hor.setHeight("30px");
-        hor.setHeight(height + "px");
+        hor.setHeight(height + Constants.PX);
         hor.addComponent(new Label(" "));
-        String text = "<p align=\"right\">" + label + "</p>";
+        String text = Constants.P_ALIGN_RIGHT + label + Constants.P;
         Label l;
         hor.addComponent(l = new Label(text, Label.CONTENT_XHTML));
         l.setSizeUndefined();
-        l.setWidth(width + "px");
+        l.setWidth(width + Constants.PX);
         hor.setComponentAlignment(l, Alignment.MIDDLE_RIGHT);
 
         if (required) {
@@ -173,14 +181,16 @@ public class LayoutHelper {
      * Helper method. Puts a blank in front of a component.
      * 
      * @param label
-     *            The label in front of the controll.
+     *            The label in front of the control.
      * @param comp
      *            The component to display.
      * @param width
-     *            the fixed size of the label. The parameter has to be in css
+     *            the fixed size of the label. The parameter has to be in CSS
      *            style, i.e. 400px for instance.
+     * @param height
      * @param required
-     *            should it be marked with an asterix.
+     *            should it be marked with an asterisk.
+     * @param buttons
      * @return The component in an horizontal layout. A blank in front and
      *         afterwards is inserted.
      */
@@ -188,13 +198,13 @@ public class LayoutHelper {
         String label, Component comp, int width, int height, boolean required,
         Button[] buttons) {
         HorizontalLayout hor = new HorizontalLayout();
-        hor.setHeight(height + "px");
+        hor.setHeight(height + Constants.PX);
         hor.addComponent(new Label(" "));
-        String text = "<p align=\"right\">" + label + "</p>";
+        String text = Constants.P_ALIGN_RIGHT + label + Constants.P;
         Label l;
         hor.addComponent(l = new Label(text, Label.CONTENT_XHTML));
         l.setSizeUndefined();
-        l.setWidth(width + "px");
+        l.setWidth(width + Constants.PX);
         hor.setComponentAlignment(l, Alignment.MIDDLE_RIGHT);
 
         if (required) {
@@ -215,7 +225,7 @@ public class LayoutHelper {
         vl.addComponent(hor);
         // VerticalLayout vl = new VerticalLayout();
         // int count = buttons.length;
-        // // TODO: Place the buttons centered ....
+        // TODO: Place the buttons centered ....
         // int numberOfElements = height / 22;
         // int indent = (numberOfElements - count) / 2;
         // indent++;
@@ -230,7 +240,7 @@ public class LayoutHelper {
         HorizontalLayout hl = new HorizontalLayout();
         Label la = new Label("&nbsp;", Label.CONTENT_XHTML);
         la.setSizeUndefined();
-        la.setWidth(width + "px");
+        la.setWidth(width + Constants.PX);
         hl.addComponent(la);
         for (Button b : buttons) {
             hl.addComponent(b);
@@ -244,14 +254,15 @@ public class LayoutHelper {
      * Helper method. Puts a blank in front of a component.
      * 
      * @param label
-     *            The label in front of the controll.
+     *            The label in front of the control.
      * @param accordion
      *            The accordion to display.
      * @param width
-     *            the fixed size of the label. The parameter has to be in css
+     *            the fixed size of the label. The parameter has to be in CSS
      *            style, i.e. 400px for instance.
+     * @param height
      * @param required
-     *            should it be marked with an asterix.
+     *            should it be marked with an asterisk.
      * @return The component in an horizontal layout. A blank in front and
      *         afterwards is inserted.
      */
@@ -259,13 +270,13 @@ public class LayoutHelper {
         String label, Accordion accordion, int width, int height,
         boolean required) {
         HorizontalLayout hor = new HorizontalLayout();
-        hor.setHeight(height + "px");
+        hor.setHeight(height + Constants.PX);
         hor.addComponent(new Label(" "));
-        String text = "<p align=\"right\">" + label + "</p>";
+        String text = Constants.P_ALIGN_RIGHT + label + Constants.P;
         Label l;
         hor.addComponent(l = new Label(text, Label.CONTENT_XHTML));
         l.setSizeUndefined();
-        l.setWidth(width + "px");
+        l.setWidth(width + Constants.PX);
         hor.setComponentAlignment(l, Alignment.MIDDLE_RIGHT);
         if (required) {
             hor
@@ -294,7 +305,7 @@ public class LayoutHelper {
 
         pan.addComponent(accordion);
         // pan.setSizeUndefined();
-        pan.setWidth(accordion.getWidth() + "px");
+        pan.setWidth(accordion.getWidth() + Constants.PX);
         // pan.setHeight("500px");
         pan.setStyleName(Reindeer.PANEL_LIGHT);
         hor.addComponent(pan);
@@ -328,13 +339,13 @@ public class LayoutHelper {
         String labelLeft, String labelRight, Component compLeft,
         Component compRight, int widthLeft, int widthRight, boolean required) {
         HorizontalLayout hor = new HorizontalLayout();
-        hor.setHeight("30px");
+        hor.setHeight(Constants.DEFAULT_HEIGHT);
         hor.addComponent(new Label(" "));
-        String text = "<p align=\"right\">" + labelLeft + "</p>";
+        String text = Constants.P_ALIGN_RIGHT + labelLeft + Constants.P;
         Label ll, lr;
         hor.addComponent(ll = new Label(text, Label.CONTENT_XHTML));
         ll.setSizeUndefined();
-        ll.setWidth(widthLeft + "px");
+        ll.setWidth(widthLeft + Constants.PX);
         hor.setComponentAlignment(ll, Alignment.MIDDLE_RIGHT);
         if (required) {
             hor
@@ -348,10 +359,10 @@ public class LayoutHelper {
         hor.addComponent(compLeft);
         hor.setComponentAlignment(compLeft, Alignment.MIDDLE_RIGHT);
         hor.addComponent(new Label("&nbsp;", Label.CONTENT_XHTML));
-        String text2 = "<p align=\"right\">" + labelRight + "</p>";
+        String text2 = Constants.P_ALIGN_RIGHT + labelRight + Constants.P;
         hor.addComponent(lr = new Label(text2, Label.CONTENT_XHTML));
         lr.setSizeUndefined();
-        lr.setWidth(widthRight + "px");
+        lr.setWidth(widthRight + Constants.PX);
         hor.setComponentAlignment(lr, Alignment.MIDDLE_RIGHT);
         if (required) {
             hor
@@ -369,17 +380,28 @@ public class LayoutHelper {
         return hor;
     }
 
+    /**
+     * 
+     * @param labelLeft
+     * @param labelRight
+     * @param compLeft
+     * @param compRight
+     * @param widthLeft
+     * @param widthRight
+     * @param required
+     * @return the constructed result.
+     */
     public static synchronized HorizontalLayout create(
         String labelLeft, String labelRight, Label compLeft, Label compRight,
         int widthLeft, int widthRight, boolean required) {
         HorizontalLayout hor = new HorizontalLayout();
-        hor.setHeight("30px");
+        hor.setHeight(Constants.DEFAULT_HEIGHT);
         hor.addComponent(new Label(" "));
-        String text = "<p align=\"right\">" + labelLeft + "</p>";
+        String text = Constants.P_ALIGN_RIGHT + labelLeft + Constants.P;
         Label ll, lr;
         hor.addComponent(ll = new Label(text, Label.CONTENT_XHTML));
         ll.setSizeUndefined();
-        ll.setWidth(widthLeft + "px");
+        ll.setWidth(widthLeft + Constants.PX);
         hor.setComponentAlignment(ll, Alignment.MIDDLE_RIGHT);
         if (required) {
             hor
@@ -393,10 +415,10 @@ public class LayoutHelper {
         hor.addComponent(compLeft);
         hor.setComponentAlignment(compLeft, Alignment.BOTTOM_RIGHT);
         hor.addComponent(new Label("&nbsp;", Label.CONTENT_XHTML));
-        String text2 = "<p align=\"right\">" + labelRight + "</p>";
+        String text2 = Constants.P_ALIGN_RIGHT + labelRight + Constants.P;
         hor.addComponent(lr = new Label(text2, Label.CONTENT_XHTML));
         lr.setSizeUndefined();
-        lr.setWidth(widthRight + "px");
+        lr.setWidth(widthRight + Constants.PX);
         hor.setComponentAlignment(lr, Alignment.BOTTOM_RIGHT);
         if (required) {
             hor
@@ -435,13 +457,13 @@ public class LayoutHelper {
         String labelLeft, String labelRight, Component compLeft,
         Component compRight, int width, boolean required) {
         HorizontalLayout hor = new HorizontalLayout();
-        hor.setHeight("30px");
+        hor.setHeight(Constants.DEFAULT_HEIGHT);
         hor.addComponent(new Label(" "));
-        String text = "<p align=\"right\">" + labelLeft + "</p>";
+        String text = Constants.P_ALIGN_RIGHT + labelLeft + Constants.P;
         Label ll, lr;
         hor.addComponent(ll = new Label(text, Label.CONTENT_XHTML));
         ll.setSizeUndefined();
-        ll.setWidth(width + "px");
+        ll.setWidth(width + Constants.PX);
         hor.setComponentAlignment(ll, Alignment.MIDDLE_RIGHT);
         if (required) {
             hor
@@ -455,10 +477,10 @@ public class LayoutHelper {
         hor.addComponent(compLeft);
         hor.setComponentAlignment(compLeft, Alignment.MIDDLE_RIGHT);
         hor.addComponent(new Label("&nbsp;", Label.CONTENT_XHTML));
-        String text2 = "<p align=\"right\">" + labelRight + "</p>";
+        String text2 = Constants.P_ALIGN_RIGHT + labelRight + Constants.P;
         hor.addComponent(lr = new Label(text2, Label.CONTENT_XHTML));
         lr.setSizeUndefined();
-        lr.setWidth(width + "px");
+        lr.setWidth(width + Constants.PX);
         hor.setComponentAlignment(lr, Alignment.MIDDLE_RIGHT);
         if (required) {
             hor
@@ -486,7 +508,7 @@ public class LayoutHelper {
      */
     public static synchronized GridLayout create(Component comp) {
         GridLayout hor = new GridLayout(3, 1);
-        hor.setHeight("30px");
+        hor.setHeight(Constants.DEFAULT_HEIGHT);
         hor.addComponent(new Label(" "), 0, 0);
         hor.addComponent(comp, 1, 0);
         hor.setComponentAlignment(comp, Alignment.MIDDLE_RIGHT);
@@ -497,6 +519,9 @@ public class LayoutHelper {
 
     /**
      * Creates an element depending on its state.
+     * 
+     * @param className
+     * @param item
      * 
      * @param readOnly
      *            can the values be changed.
@@ -529,6 +554,14 @@ public class LayoutHelper {
         return comp;
     }
 
+    /**
+     * @param className
+     * @param item
+     * @param readOnly
+     * @param propertyName
+     * @param values
+     * @return
+     */
     public static synchronized AbstractComponent createSelectElement(
         final String className, final POJOItem<?> item, final boolean readOnly,
         final String propertyName, final String[] values) {
@@ -556,6 +589,14 @@ public class LayoutHelper {
         return comp;
     }
 
+    /**
+     * @param className
+     * @param item
+     * @param readOnly
+     * @param propertyName
+     * @param values
+     * @return
+     */
     public static synchronized AbstractComponent createSelectElement(
         final String className, final POJOItem<?> item, final boolean readOnly,
         final String propertyName, final Enum<?>[] values) {
@@ -583,6 +624,14 @@ public class LayoutHelper {
         return comp;
     }
 
+    /**
+     * @param className
+     * @param item
+     * @param readOnly
+     * @param propertyName
+     * @param values
+     * @return
+     */
     public static synchronized AbstractComponent createSelectElement(
         final String className, final POJOItem<?> item, final boolean readOnly,
         final String propertyName, final IMenuItem[] values) {
@@ -610,6 +659,13 @@ public class LayoutHelper {
         return comp;
     }
 
+    /**
+     * @param className
+     * @param item
+     * @param readOnly
+     * @param propertyName
+     * @return
+     */
     public static synchronized AbstractComponent createListElement(
         final String className, final POJOItem<?> item, final boolean readOnly,
         final String propertyName) {
@@ -627,6 +683,14 @@ public class LayoutHelper {
         return comp;
     }
 
+    /**
+     * @param className
+     * @param item
+     * @param readOnly
+     * @param propertyName
+     * @param resolution
+     * @return
+     */
     public static synchronized AbstractComponent createDateElement(
         final String className, final POJOItem<?> item, final boolean readOnly,
         final String propertyName, int resolution) {
@@ -652,6 +716,14 @@ public class LayoutHelper {
         return comp;
     }
 
+    /**
+     * @param className
+     * @param item
+     * @param readOnly
+     * @param text
+     * @param propertyName
+     * @return
+     */
     public static synchronized AbstractComponent createCheckBoxElement(
         final String className, final POJOItem<?> item, final boolean readOnly,
         final String text, final String propertyName) {
@@ -669,34 +741,65 @@ public class LayoutHelper {
         return comp;
     }
 
+    /**
+     * @param form
+     * @param comp
+     * @param label
+     * @param labelWidth
+     * @param width
+     * @param height
+     * @param required
+     */
     public static synchronized void addElement(
         final FormLayout form, final AbstractComponent comp,
         final String label, final int labelWidth, final int width,
         final int height, final boolean required) {
-        comp.setWidth(width + "px");
+        comp.setWidth(width + Constants.PX);
         form.addComponent(LayoutHelper.create(label, comp, labelWidth, height,
             required));
     }
 
+    /**
+     * @param form
+     * @param comp
+     * @param label
+     * @param labelWidth
+     * @param width
+     * @param height
+     * @param required
+     * @param buttons
+     */
     public static synchronized void addElement(
         final FormLayout form, final AbstractComponent comp,
         final String label, final int labelWidth, final int width,
         final int height, final boolean required, Button[] buttons) {
-        comp.setWidth(width + "px");
+        comp.setWidth(width + Constants.PX);
         form.addComponent(LayoutHelper.create(label, comp, labelWidth, height,
             required, buttons));
     }
 
+    /**
+     * @param form
+     * @param comp
+     * @param label
+     * @param labelWidth
+     * @param width
+     * @param required
+     */
     public static synchronized void addElement(
         final FormLayout form, final AbstractComponent comp,
         final String label, final int labelWidth, final int width,
         final boolean required) {
-        comp.setWidth(width + "px");
+        comp.setWidth(width + Constants.PX);
         form.addComponent(LayoutHelper
             .create(label, comp, labelWidth, required));
 
     }
 
+    /**
+     * @param className
+     * @return
+     */
     public static List<Field> getAttachedFields(String className) {
         return attachedFieldsMap.get(className);
     }
