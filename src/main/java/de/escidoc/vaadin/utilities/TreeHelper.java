@@ -7,6 +7,11 @@ import com.vaadin.ui.Tree;
  * 
  */
 public class TreeHelper {
+
+    private TreeHelper() {
+        // Utility classes should not have a public or default constructor.
+    }
+
     /**
      * Appends an child object to the parent.
      * 
