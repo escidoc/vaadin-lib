@@ -12,9 +12,13 @@ import com.vaadin.ui.Label;
 import com.vaadin.ui.Window;
 
 import de.escidoc.vaadin.Constants;
-import de.escidoc.vaadin.interfaces.IMenuItem;
 import de.escidoc.vaadin.utilities.LayoutHelper;
 
+/**
+ * 
+ * @author ASP
+ * 
+ */
 public class HistoryDialog extends Window implements Button.ClickListener {
     private static final long serialVersionUID = 4138381496395357610L;
 
@@ -29,11 +33,14 @@ public class HistoryDialog extends Window implements Button.ClickListener {
      *            the main window of the application.
      * @param caption
      *            the headline.
-     * @param item
+     * @param pojo
+     *            the data binding.
+     * @param className
+     *            the name of the class.
      */
     public HistoryDialog(final Window mainWindow, final String caption,
-        IMenuItem item, final POJOItem<?> pojo, final String className) {
-        this(mainWindow, caption, item, 600, 300, pojo, className);
+        final POJOItem<?> pojo, final String className) {
+        this(mainWindow, caption, 600, 300, pojo, className);
     }
 
     /**
@@ -43,16 +50,17 @@ public class HistoryDialog extends Window implements Button.ClickListener {
      *            the main window of the application.
      * @param caption
      *            the headline.
-     * @param item
-     *            the java bean containing the information
      * @param width
      *            the width of the window.
      * @param height
      *            the height of the window.
+     * @param pojo
+     *            the data binding.
+     * @param className
+     *            the name of the class.
      */
     public HistoryDialog(final Window mainWindow, final String caption,
-        IMenuItem item, int width, int height, final POJOItem<?> pojo,
-        final String className) {
+        int width, int height, final POJOItem<?> pojo, final String className) {
         this.mainWindow = mainWindow;
         super.setWidth(width + "px");
         super.setHeight(height + "px");
