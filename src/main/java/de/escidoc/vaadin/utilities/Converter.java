@@ -11,11 +11,18 @@ import java.util.Set;
 
 import org.joda.time.DateTime;
 
+import de.escidoc.vaadin.Constants;
+
 /**
  * @author ASP
  * 
  */
 public class Converter {
+
+    private Converter() {
+        // Utility classes should not have a public or default constructor.
+    }
+
     /**
      * Converts DateTime to String.
      * 
@@ -25,7 +32,7 @@ public class Converter {
      */
     public static synchronized String dateTimeToString(DateTime dateTime) {
         Date date = dateTime.toDate();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat(Constants.DATE_FORMAT);
         return sdf.format(date);
     }
 
