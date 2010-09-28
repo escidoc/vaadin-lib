@@ -13,6 +13,10 @@ import com.vaadin.ui.TextField;
  */
 public class EmptyFieldValidator {
 
+    private EmptyFieldValidator() {
+        // Utility classes should not have a public or default constructor.
+    }
+
     /**
      * A simple validator to test, if the field is filled.
      * 
