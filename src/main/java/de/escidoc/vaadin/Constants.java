@@ -3,7 +3,6 @@
  */
 package de.escidoc.vaadin;
 
-
 /**
  * @author ASP
  * 
@@ -16,5 +15,15 @@ public class Constants {
     public static final String MODIFIED_BY = "modifiedBy";
 
     public static final String MODIFIED_ON = "modifiedOn";
+
+    public static final String DATE_FORMAT = "dd.MM.yyyy";
+
+    public static final String DEFAULT_HEIGHT = "30px";
+
+    public static final String P_ALIGN_RIGHT = "<p align=\"right\">";
+
+    public static final String PX = "px";
+
+    public static final String P = "</p>";
 
 }
