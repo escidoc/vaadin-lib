@@ -8,10 +8,17 @@ import com.vaadin.ui.Window;
 
 import de.escidoc.vaadin.utilities.LayoutHelper;
 
-public class ErrorDialog extends Window {
+/**
+ * 
+ * @author ASP
+ * 
+ */
+public class ErrorDialog extends Window implements Button.ClickListener {
     private static final long serialVersionUID = 6255824594582824620L;
 
     private final FormLayout layout = new FormLayout();
+
+    private final Window mainWindow;
 
     /**
      * Displays an error message dialog to the customer.
@@ -44,6 +51,7 @@ public class ErrorDialog extends Window {
      */
     public ErrorDialog(final Window mainWindow, final String caption,
         final String errorMessage, int width, int height) {
+        this.mainWindow = mainWindow;
         super.setWidth(width + "px");
         super.setHeight(height + "px");
         super.setCaption(caption);
@@ -52,14 +60,12 @@ public class ErrorDialog extends Window {
             10, false));
         Button button = new Button("OK");
         layout.addComponent(LayoutHelper.create("", button, 10, false));
-        button.addListener(new Button.ClickListener() {
-            private static final long serialVersionUID = 6160566882245069146L;
-
-            @Override
-            public void buttonClick(ClickEvent event) {
-                mainWindow.removeWindow(ErrorDialog.this);
-            }
-        });
+        button.addListener(this);
         super.addComponent(layout);
+    }
+
+    @Override
+    public void buttonClick(ClickEvent event) {
+        mainWindow.removeWindow(ErrorDialog.this);
     }
 }
