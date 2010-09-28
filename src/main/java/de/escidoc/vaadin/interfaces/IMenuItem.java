@@ -91,8 +91,8 @@ public interface IMenuItem {
 
     /**
      * 
-     * @param an
-     *            id for the used content model.
+     * @param id
+     *            an id for the used content model.
      */
     public void setContentModel(String id);
 
@@ -104,8 +104,8 @@ public interface IMenuItem {
 
     /**
      * 
-     * @param an
-     *            id for the used context.
+     * @param id
+     *            an id for the used context.
      */
     public void setContext(String id);
 
