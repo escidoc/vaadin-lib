@@ -115,4 +115,18 @@ public interface IMenuItem {
      * @return a String matching a key in the constants definition.
      */
     public String getReferenceType();
+
+    /**
+     * 
+     * @return the date when the last modification occurred.
+     */
+    public Date getLastModifiactionDate();
+
+    /**
+     * 
+     * @param date
+     *            the date when the last modification occurred.
+     */
+    public void setLastModifiactionDate(Date date);
+
 }
