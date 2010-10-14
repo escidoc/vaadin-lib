@@ -14,6 +14,7 @@ import com.vaadin.ui.TextField;
 public class EmptyFieldValidator {
 
     private EmptyFieldValidator() {
+
         // Utility classes should not have a public or default constructor.
     }
 
@@ -29,6 +30,7 @@ public class EmptyFieldValidator {
      */
     public static synchronized boolean isValid(
         final TextField textField, final String message) {
+
         if (!(textField.getValue() != null && ((String) textField.getValue())
             .trim().length() > 0)) {
             textField.setComponentError(null);
@@ -51,6 +53,7 @@ public class EmptyFieldValidator {
      */
     public static synchronized boolean isValid(
         final ListSelect list, final String message) {
+
         if (list.getItemIds() != null && list.getItemIds().size() > 0) {
             list.setComponentError(null);
             return true;
