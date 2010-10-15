@@ -116,17 +116,4 @@ public interface IMenuItem {
      */
     public String getReferenceType();
 
-    /**
-     * 
-     * @return the date when the last modification occurred.
-     */
-    public Date getLastModifiactionDate();
-
-    /**
-     * 
-     * @param date
-     *            the date when the last modification occurred.
-     */
-    public void setLastModifiactionDate(Date date);
-
 }
