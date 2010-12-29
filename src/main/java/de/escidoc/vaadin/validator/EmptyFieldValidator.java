@@ -5,6 +5,7 @@ package de.escidoc.vaadin.validator;
 
 import com.vaadin.terminal.UserError;
 import com.vaadin.ui.ListSelect;
+import com.vaadin.ui.NativeSelect;
 import com.vaadin.ui.TextField;
 
 /**
@@ -64,4 +65,27 @@ public class EmptyFieldValidator {
         return false;
     }
 
+
+    /**
+     * A simple validator to test, if the field is filled.
+     * 
+     * @param list
+     *            The list to test.
+     * @param message
+     *            The message that should be shown (as a tooltip) if the result
+     *            is bad.
+     * @return true if the field is filled, otherwise false.
+     */
+    public static synchronized boolean isValid(
+        final NativeSelect select, final String blank, final String message) {
+
+        if (select != null && select.getValue()!= null && !((String)select.getValue()).equals(blank)) {
+            select.setComponentError(null);
+            return true;
+        }
+
+        select.setComponentError(null);
+        select.setComponentError(new UserError(message));
+        return false;
+    }
 }
