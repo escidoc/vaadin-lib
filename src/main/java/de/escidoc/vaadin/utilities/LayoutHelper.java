@@ -22,6 +22,7 @@ import com.vaadin.ui.GridLayout;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.ListSelect;
+import com.vaadin.ui.NativeSelect;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.Select;
 import com.vaadin.ui.TextField;
@@ -60,7 +61,8 @@ public class LayoutHelper {
      *         afterwards is inserted.
      */
     public static synchronized HorizontalLayout create(
-        String label, Component comp, int width, boolean required) {
+
+    String label, Component comp, int width, boolean required) {
         HorizontalLayout hor = new HorizontalLayout();
         hor.setHeight(Constants.DEFAULT_HEIGHT);
         hor.addComponent(new Label(" "));
@@ -103,7 +105,8 @@ public class LayoutHelper {
      *         afterwards is inserted.
      */
     public static synchronized HorizontalLayout create(
-        String label, CheckBox comp, int width, boolean required) {
+
+    String label, CheckBox comp, int width, boolean required) {
         HorizontalLayout hor = new HorizontalLayout();
         hor.setHeight(Constants.DEFAULT_HEIGHT);
         hor.addComponent(new Label(" "));
@@ -148,7 +151,8 @@ public class LayoutHelper {
      *         afterwards is inserted.
      */
     public static synchronized HorizontalLayout create(
-        String label, Component comp, int width, int height, boolean required) {
+
+    String label, Component comp, int width, int height, boolean required) {
         HorizontalLayout hor = new HorizontalLayout();
         // hor.setHeight("30px");
         hor.setHeight(height + Constants.PX);
@@ -191,12 +195,14 @@ public class LayoutHelper {
      * @param required
      *            should it be marked with an asterisk.
      * @param buttons
+     *            the buttons to display.
      * @return The component in an horizontal layout. A blank in front and
      *         afterwards is inserted.
      */
     public static synchronized VerticalLayout create(
         String label, Component comp, int width, int height, boolean required,
         Button[] buttons) {
+
         HorizontalLayout hor = new HorizontalLayout();
         hor.setHeight(height + Constants.PX);
         hor.addComponent(new Label(" "));
@@ -269,6 +275,7 @@ public class LayoutHelper {
     public static synchronized HorizontalLayout create(
         String label, Accordion accordion, int width, int height,
         boolean required) {
+
         HorizontalLayout hor = new HorizontalLayout();
         hor.setHeight(height + Constants.PX);
         hor.addComponent(new Label(" "));
@@ -338,6 +345,7 @@ public class LayoutHelper {
     public static synchronized HorizontalLayout create(
         String labelLeft, String labelRight, Component compLeft,
         Component compRight, int widthLeft, int widthRight, boolean required) {
+
         HorizontalLayout hor = new HorizontalLayout();
         hor.setHeight(Constants.DEFAULT_HEIGHT);
         hor.addComponent(new Label(" "));
@@ -394,6 +402,7 @@ public class LayoutHelper {
     public static synchronized HorizontalLayout create(
         String labelLeft, String labelRight, Label compLeft, Label compRight,
         int widthLeft, int widthRight, boolean required) {
+
         HorizontalLayout hor = new HorizontalLayout();
         hor.setHeight(Constants.DEFAULT_HEIGHT);
         hor.addComponent(new Label(" "));
@@ -456,6 +465,7 @@ public class LayoutHelper {
     public static synchronized HorizontalLayout create(
         String labelLeft, String labelRight, Component compLeft,
         Component compRight, int width, boolean required) {
+
         HorizontalLayout hor = new HorizontalLayout();
         hor.setHeight(Constants.DEFAULT_HEIGHT);
         hor.addComponent(new Label(" "));
@@ -507,6 +517,7 @@ public class LayoutHelper {
      *         is inserted.
      */
     public static synchronized GridLayout create(Component comp) {
+
         GridLayout hor = new GridLayout(3, 1);
         hor.setHeight(Constants.DEFAULT_HEIGHT);
         hor.addComponent(new Label(" "), 0, 0);
@@ -521,7 +532,9 @@ public class LayoutHelper {
      * Creates an element depending on its state.
      * 
      * @param className
+     *            the name of the calling class.
      * @param item
+     *            an instance of POJOItem.
      * 
      * @param readOnly
      *            can the values be changed.
@@ -532,6 +545,7 @@ public class LayoutHelper {
     public static synchronized AbstractComponent createElement(
         final String className, final POJOItem<?> item, final boolean readOnly,
         final String propertyName) {
+
         AbstractComponent comp;
         if (readOnly) {
             comp = new Label();
@@ -555,16 +569,25 @@ public class LayoutHelper {
     }
 
     /**
+     * Creates an element depending on its state.
+     * 
      * @param className
+     *            the name of the calling class.
      * @param item
+     *            an instance of POJOItem.
+     * 
      * @param readOnly
+     *            can the values be changed.
      * @param propertyName
+     *            the name of the binding property.
      * @param values
-     * @return
+     *            the values to display in the select element.
+     * @return the initialized component.
      */
     public static synchronized AbstractComponent createSelectElement(
         final String className, final POJOItem<?> item, final boolean readOnly,
         final String propertyName, final String[] values) {
+
         AbstractComponent comp;
         if (readOnly) {
             comp = new Label();
@@ -590,16 +613,25 @@ public class LayoutHelper {
     }
 
     /**
+     * Creates a Select depending on its state.
+     * 
      * @param className
+     *            the name of the calling class.
      * @param item
+     *            an instance of POJOItem.
+     * 
      * @param readOnly
+     *            can the values be changed.
      * @param propertyName
+     *            the name of the binding property.
      * @param values
-     * @return
+     *            the values to display in the select element.
+     * @return the initialized component.
      */
     public static synchronized AbstractComponent createSelectElement(
         final String className, final POJOItem<?> item, final boolean readOnly,
         final String propertyName, final Enum<?>[] values) {
+
         AbstractComponent comp;
         if (readOnly) {
             comp = new Label();
@@ -625,12 +657,64 @@ public class LayoutHelper {
     }
 
     /**
+     * Creates a native select depending on its state.
+     * 
      * @param className
+     *            the name of the calling class.
      * @param item
+     *            an instance of POJOItem.
+     * 
      * @param readOnly
+     *            can the values be changed.
      * @param propertyName
+     *            the name of the binding property.
      * @param values
-     * @return
+     *            the values to display in the select element.
+     * @return the initialized component.
+     */
+    public static synchronized AbstractComponent createNativeSelectElement(
+        final String className, final POJOItem<?> item, final boolean readOnly,
+        final String propertyName, final Enum<?>[] values) {
+
+        AbstractComponent comp;
+        if (readOnly) {
+            comp = new Label();
+            ((Label) comp).setPropertyDataSource(item
+                .getItemProperty(propertyName));
+        }
+        else {
+            comp = new NativeSelect();
+            for (final Enum<?> theItem : values) {
+                ((NativeSelect) comp).addItem(theItem);
+            }
+            ((NativeSelect) comp).setWriteThrough(false);
+            ((NativeSelect) comp).setPropertyDataSource(item
+                .getItemProperty(propertyName));
+            List<Field> attachedFields = attachedFieldsMap.get(className);
+            if (attachedFields == null) {
+                attachedFields = new ArrayList<Field>();
+                attachedFieldsMap.put(className, attachedFields);
+            }
+            attachedFields.add((Field) comp);
+        }
+        return comp;
+    }
+
+    /**
+     * Creates a select depending on its state.
+     * 
+     * @param className
+     *            the name of the calling class.
+     * @param item
+     *            an instance of POJOItem.
+     * 
+     * @param readOnly
+     *            can the values be changed.
+     * @param propertyName
+     *            the name of the binding property.
+     * @param values
+     *            the values to display in the select element.
+     * @return the initialized component.
      */
     public static synchronized AbstractComponent createSelectElement(
         final String className, final POJOItem<?> item, final boolean readOnly,
@@ -660,15 +744,23 @@ public class LayoutHelper {
     }
 
     /**
+     * Creates a select depending on its state.
+     * 
      * @param className
+     *            the name of the calling class.
      * @param item
+     *            an instance of POJOItem.
+     * 
      * @param readOnly
+     *            can the values be changed.
      * @param propertyName
-     * @return
+     *            the name of the binding property.
+     * @return the initialized component.
      */
     public static synchronized AbstractComponent createListElement(
         final String className, final POJOItem<?> item, final boolean readOnly,
         final String propertyName) {
+
         final AbstractComponent comp = new ListSelect();
         ((ListSelect) comp).setReadOnly(readOnly);
         ((ListSelect) comp).setPropertyDataSource(item
@@ -684,16 +776,25 @@ public class LayoutHelper {
     }
 
     /**
+     * Creates a select depending on its state.
+     * 
      * @param className
+     *            the name of the calling class.
      * @param item
+     *            an instance of POJOItem.
+     * 
      * @param readOnly
+     *            can the values be changed.
      * @param propertyName
+     *            the name of the binding property.
      * @param resolution
-     * @return
+     *            the resolution of the calendar.
+     * @return the initialized component.
      */
     public static synchronized AbstractComponent createDateElement(
         final String className, final POJOItem<?> item, final boolean readOnly,
         final String propertyName, int resolution) {
+
         AbstractComponent comp;
         if (readOnly) {
             comp = new Label();
@@ -717,16 +818,27 @@ public class LayoutHelper {
     }
 
     /**
+     * Creates a select depending on its state.
+     * 
      * @param className
+     *            the name of the calling class.
      * @param item
+     *            an instance of POJOItem.
+     * 
      * @param readOnly
+     *            can the values be changed.
      * @param text
+     *            the text of the checkbox.
      * @param propertyName
-     * @return
+     *            the name of the binding property.
+     * @param resolution
+     *            the resolution of the calendar.
+     * @return the initialized component.
      */
     public static synchronized AbstractComponent createCheckBoxElement(
         final String className, final POJOItem<?> item, final boolean readOnly,
         final String text, final String propertyName) {
+
         AbstractComponent comp = new CheckBox(text);
         comp.setReadOnly(readOnly);
         ((CheckBox) comp).setWriteThrough(false);
@@ -743,17 +855,25 @@ public class LayoutHelper {
 
     /**
      * @param form
+     *            the form layout to add the component to.
      * @param comp
+     *            the component to add.
      * @param label
+     *            the label in front of the component.
      * @param labelWidth
+     *            the min. width of the label.
      * @param width
+     *            the width of the component.
      * @param height
+     *            the height of the
      * @param required
+     *            true if the field is mandatory.
      */
     public static synchronized void addElement(
         final FormLayout form, final AbstractComponent comp,
         final String label, final int labelWidth, final int width,
         final int height, final boolean required) {
+        
         comp.setWidth(width + Constants.PX);
         form.addComponent(LayoutHelper.create(label, comp, labelWidth, height,
             required));
@@ -761,18 +881,27 @@ public class LayoutHelper {
 
     /**
      * @param form
+     *            the form layout to add the component to.
      * @param comp
+     *            the component to add.
      * @param label
+     *            the label in front of the component.
      * @param labelWidth
+     *            the min. width of the label.
      * @param width
+     *            the width of the component.
      * @param height
+     *            the height of the
      * @param required
+     *            true if the field is mandatory.
      * @param buttons
+     *            the buttons to display.
      */
     public static synchronized void addElement(
         final FormLayout form, final AbstractComponent comp,
         final String label, final int labelWidth, final int width,
         final int height, final boolean required, Button[] buttons) {
+     
         comp.setWidth(width + Constants.PX);
         form.addComponent(LayoutHelper.create(label, comp, labelWidth, height,
             required, buttons));
@@ -780,11 +909,17 @@ public class LayoutHelper {
 
     /**
      * @param form
+     *            the form layout to add the component to.
      * @param comp
+     *            the component to add.
      * @param label
+     *            the label in front of the component.
      * @param labelWidth
+     *            the min. width of the label.
      * @param width
+     *            the width of the component.
      * @param required
+     *            true if the field is mandatory.
      */
     public static synchronized void addElement(
         final FormLayout form, final AbstractComponent comp,
@@ -794,6 +929,73 @@ public class LayoutHelper {
         form.addComponent(LayoutHelper
             .create(label, comp, labelWidth, required));
 
+    }
+
+    /**
+     * @param form
+     *            the form layout to add the component to.
+     * @param comp
+     *            the component to add.
+     * @param label
+     *            the label in front of the component.
+     * @param labelWidth
+     *            the min. width of the label.
+     * @param width
+     *            the width of the component.
+     * @param required
+     *            true if the field is mandatory.
+     */
+    public static synchronized void addElement(
+        final FormLayout form, final FormLayout comp, final String label,
+        final int labelWidth, final int width, final boolean required) {
+        comp.setWidth(width + Constants.PX);
+        form.addComponent(LayoutHelper
+            .create(label, comp, labelWidth, required));
+
+    }
+
+    /**
+     * Helper method. Puts a blank in front of a component.
+     * 
+     * @param label
+     *            The label in front of the control.
+     * @param comp
+     *            The customer build component to display.
+     * @param width
+     *            the fixed size of the label. The parameter has to be in CSS
+     *            style, i.e. 400px for instance.
+     * @param required
+     *            should it be marked with an asterisk.
+     * @return The component in an horizontal layout. A blank in front and
+     *         afterwards is inserted.
+     */
+    public static synchronized HorizontalLayout create(
+        String label, FormLayout comp, int width, boolean required) {
+
+        HorizontalLayout hor = new HorizontalLayout();
+        hor.setHeight("400px");
+        hor.addComponent(new Label(" "));
+        String text = Constants.P_ALIGN_RIGHT + label + Constants.P;
+        Label l;
+        hor.addComponent(l = new Label(text, Label.CONTENT_XHTML));
+        l.setSizeUndefined();
+        l.setWidth(width + Constants.PX);
+        hor.setComponentAlignment(l, com.vaadin.ui.Alignment.MIDDLE_RIGHT);
+
+        if (required) {
+            hor
+                .addComponent(new Label(
+                    "&nbsp;<span style=\"color:red; position:relative; top:13px;\">*</span>",
+                    Label.CONTENT_XHTML));
+        }
+        else {
+            hor.addComponent(new Label("&nbsp;&nbsp;", Label.CONTENT_XHTML));
+        }
+        hor.addComponent(comp);
+        hor.setComponentAlignment(comp, Alignment.MIDDLE_RIGHT);
+        hor.addComponent(new Label(" "));
+        hor.setSpacing(false);
+        return hor;
     }
 
     /**
