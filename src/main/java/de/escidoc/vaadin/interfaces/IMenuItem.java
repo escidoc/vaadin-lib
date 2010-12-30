@@ -79,11 +79,6 @@ public interface IMenuItem {
     public void setModifiedOn(Date modifiedOn);
 
     /**
-     * @return an array of action that should be possible in the context menu.
-     */
-    public Action[] getActions();
-
-    /**
      * 
      * @return an id for the used content model.
      */
