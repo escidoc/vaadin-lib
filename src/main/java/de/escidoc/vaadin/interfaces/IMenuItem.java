@@ -5,8 +5,6 @@ package de.escidoc.vaadin.interfaces;
 
 import java.util.Date;
 
-import com.vaadin.event.Action;
-
 /**
  * @author ASP
  * 
