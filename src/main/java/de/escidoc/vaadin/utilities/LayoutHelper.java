@@ -701,6 +701,50 @@ public class LayoutHelper {
     }
 
     /**
+     * Creates a native select depending on its state.
+     * 
+     * @param className
+     *            the name of the calling class.
+     * @param item
+     *            an instance of POJOItem.
+     * 
+     * @param readOnly
+     *            can the values be changed.
+     * @param propertyName
+     *            the name of the binding property.
+     * @param values
+     *            the values to display in the select element.
+     * @return the initialized component.
+     */
+    public static synchronized AbstractComponent createNativeSelectElement(
+        final String className, final POJOItem<?> item, final boolean readOnly,
+        final String propertyName, final IMenuItem[] values) {
+
+        AbstractComponent comp;
+        if (readOnly) {
+            comp = new Label();
+            ((Label) comp).setPropertyDataSource(item
+                .getItemProperty(propertyName));
+        }
+        else {
+            comp = new NativeSelect();
+            for (final IMenuItem theItem : values) {
+                ((NativeSelect) comp).addItem(theItem);
+            }
+            ((NativeSelect) comp).setWriteThrough(false);
+            ((NativeSelect) comp).setPropertyDataSource(item
+                .getItemProperty(propertyName));
+            List<Field> attachedFields = attachedFieldsMap.get(className);
+            if (attachedFields == null) {
+                attachedFields = new ArrayList<Field>();
+                attachedFieldsMap.put(className, attachedFields);
+            }
+            attachedFields.add((Field) comp);
+        }
+        return comp;
+    }
+
+    /**
      * Creates a select depending on its state.
      * 
      * @param className
