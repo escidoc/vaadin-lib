@@ -50,10 +50,10 @@
 			<type>jar</type>
 		</dependency>
 		<dependency>
-			<groupId>org.escidoc.core</groupId>
-			<artifactId>client-1.2</artifactId>
-			<version>0.8-SNAPSHOT</version>
-			<type>jar</type>
+		    <groupId>org.escidoc.core</groupId>
+		    <artifactId>client-1.2</artifactId>
+		    <version>0.8-beta1</version>
+		    <classifier>sources</classifier>
 		</dependency>
 
 		<!-- tests -->
@@ -129,7 +129,9 @@
 			</plugin>
  -->			
 		</plugins>
-		<finalName>${project.artifactId}-${Major}.${Minor}.${Release}-b${BUILD_NUMBER}</finalName>
+		<!--  		<finalName>${project.artifactId}-${Major}.${Minor}.${Release}-b${BUILD_NUMBER}</finalName>
+		-->
+		<finalName>${project.artifactId}-${Major}.${Minor}.${Release}</finalName>
 	</build>
 	<!-- JavaDoc, Site information generation -->
 	<reporting>
