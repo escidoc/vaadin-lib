@@ -546,6 +546,30 @@ public class LayoutHelper {
         final String className, final POJOItem<?> item, final boolean readOnly,
         final String propertyName) {
 
+        return createElement(className, item, readOnly, propertyName, false);
+    }
+
+    /**
+     * Creates an element depending on its state.
+     * 
+     * @param className
+     *            the name of the calling class.
+     * @param item
+     *            an instance of POJOItem.
+     * 
+     * @param readOnly
+     *            can the values be changed.
+     * @param propertyName
+     *            the name of the binding property.
+     * 
+     * @param hasFocus
+     *            true, if the component has focus, otherwiese false.
+     * @return the initialized component.
+     */
+    public static synchronized AbstractComponent createElement(
+        final String className, final POJOItem<?> item, final boolean readOnly,
+        final String propertyName, boolean hasFocus) {
+
         AbstractComponent comp;
         if (readOnly) {
             comp = new Label();
@@ -558,6 +582,9 @@ public class LayoutHelper {
             ((TextField) comp).setWriteThrough(false);
             ((TextField) comp).setPropertyDataSource(item
                 .getItemProperty(propertyName));
+            if (hasFocus) {
+                ((TextField) comp).focus();
+            }
             List<Field> attachedFields = attachedFieldsMap.get(className);
             if (attachedFields == null) {
                 attachedFields = new ArrayList<Field>();
@@ -588,6 +615,32 @@ public class LayoutHelper {
         final String className, final POJOItem<?> item, final boolean readOnly,
         final String propertyName, final String[] values) {
 
+        return createSelectElement(className, item, readOnly, propertyName,
+            values, false);
+    }
+
+    /**
+     * Creates an element depending on its state.
+     * 
+     * @param className
+     *            the name of the calling class.
+     * @param item
+     *            an instance of POJOItem.
+     * 
+     * @param readOnly
+     *            can the values be changed.
+     * @param propertyName
+     *            the name of the binding property.
+     * @param values
+     *            the values to display in the select element.
+     * @param hasFocus
+     *            true, if the component has focus, otherwiese false.
+     * @return the initialized component.
+     */
+    public static synchronized AbstractComponent createSelectElement(
+        final String className, final POJOItem<?> item, final boolean readOnly,
+        final String propertyName, final String[] values, final boolean hasFocus) {
+
         AbstractComponent comp;
         if (readOnly) {
             comp = new Label();
@@ -602,6 +655,9 @@ public class LayoutHelper {
             ((Select) comp).setWriteThrough(false);
             ((Select) comp).setPropertyDataSource(item
                 .getItemProperty(propertyName));
+            if (hasFocus) {
+                ((Select) comp).focus();
+            }
             List<Field> attachedFields = attachedFieldsMap.get(className);
             if (attachedFields == null) {
                 attachedFields = new ArrayList<Field>();
@@ -632,6 +688,33 @@ public class LayoutHelper {
         final String className, final POJOItem<?> item, final boolean readOnly,
         final String propertyName, final Enum<?>[] values) {
 
+        return createSelectElement(className, item, readOnly, propertyName,
+            values, false);
+    }
+
+    /**
+     * Creates a Select depending on its state.
+     * 
+     * @param className
+     *            the name of the calling class.
+     * @param item
+     *            an instance of POJOItem.
+     * 
+     * @param readOnly
+     *            can the values be changed.
+     * @param propertyName
+     *            the name of the binding property.
+     * @param values
+     *            the values to display in the select element.
+     * @param hasFocus
+     *            true, if the component has focus, otherwiese false.
+     * @return the initialized component.
+     */
+    public static synchronized AbstractComponent createSelectElement(
+        final String className, final POJOItem<?> item, final boolean readOnly,
+        final String propertyName, final Enum<?>[] values,
+        final boolean hasFocus) {
+
         AbstractComponent comp;
         if (readOnly) {
             comp = new Label();
@@ -644,6 +727,9 @@ public class LayoutHelper {
                 ((Select) comp).addItem(theItem);
             }
             ((Select) comp).setWriteThrough(false);
+            if (hasFocus) {
+                ((Select) comp).focus();
+            }
             ((Select) comp).setPropertyDataSource(item
                 .getItemProperty(propertyName));
             List<Field> attachedFields = attachedFieldsMap.get(className);
@@ -676,6 +762,32 @@ public class LayoutHelper {
         final String className, final POJOItem<?> item, final boolean readOnly,
         final String propertyName, final Enum<?>[] values) {
 
+        return createNativeSelectElement(className, item, readOnly,
+            propertyName, values, false);
+    }
+
+    /**
+     * Creates a native select depending on its state.
+     * 
+     * @param className
+     *            the name of the calling class.
+     * @param item
+     *            an instance of POJOItem.
+     * 
+     * @param readOnly
+     *            can the values be changed.
+     * @param propertyName
+     *            the name of the binding property.
+     * @param hasFocus
+     *            true, if the component has focus, otherwiese false.
+     * @param values
+     *            the values to display in the select element.
+     * @return the initialized component.
+     */
+    public static synchronized AbstractComponent createNativeSelectElement(
+        final String className, final POJOItem<?> item, final boolean readOnly,
+        final String propertyName, final Enum<?>[] values, boolean hasFocus) {
+
         AbstractComponent comp;
         if (readOnly) {
             comp = new Label();
@@ -690,6 +802,9 @@ public class LayoutHelper {
             ((NativeSelect) comp).setWriteThrough(false);
             ((NativeSelect) comp).setPropertyDataSource(item
                 .getItemProperty(propertyName));
+            if (hasFocus) {
+                ((NativeSelect) comp).focus();
+            }
             List<Field> attachedFields = attachedFieldsMap.get(className);
             if (attachedFields == null) {
                 attachedFields = new ArrayList<Field>();
@@ -720,6 +835,31 @@ public class LayoutHelper {
         final String className, final POJOItem<?> item, final boolean readOnly,
         final String propertyName, final IMenuItem[] values) {
 
+        return createNativeSelectElement(className, item, readOnly,
+            propertyName, values, false);
+    }
+
+    /**
+     * Creates a native select depending on its state.
+     * 
+     * @param className
+     *            the name of the calling class.
+     * @param item
+     *            an instance of POJOItem.
+     * 
+     * @param readOnly
+     *            can the values be changed.
+     * @param propertyName
+     *            the name of the binding property.
+     * @param values
+     *            the values to display in the select element.
+     * @return the initialized component.
+     */
+    public static synchronized AbstractComponent createNativeSelectElement(
+        final String className, final POJOItem<?> item, final boolean readOnly,
+        final String propertyName, final IMenuItem[] values,
+        final boolean hasFocus) {
+
         AbstractComponent comp;
         if (readOnly) {
             comp = new Label();
@@ -734,6 +874,9 @@ public class LayoutHelper {
             ((NativeSelect) comp).setWriteThrough(false);
             ((NativeSelect) comp).setPropertyDataSource(item
                 .getItemProperty(propertyName));
+            if (hasFocus) {
+                ((NativeSelect) comp).focus();
+            }
             List<Field> attachedFields = attachedFieldsMap.get(className);
             if (attachedFields == null) {
                 attachedFields = new ArrayList<Field>();
@@ -763,6 +906,34 @@ public class LayoutHelper {
     public static synchronized AbstractComponent createSelectElement(
         final String className, final POJOItem<?> item, final boolean readOnly,
         final String propertyName, final IMenuItem[] values) {
+
+        return createSelectElement(className, item, readOnly, propertyName,
+            values, false);
+    }
+
+    /**
+     * Creates a select depending on its state.
+     * 
+     * @param className
+     *            the name of the calling class.
+     * @param item
+     *            an instance of POJOItem.
+     * 
+     * @param readOnly
+     *            can the values be changed.
+     * @param propertyName
+     *            the name of the binding property.
+     * @param values
+     *            the values to display in the select element.
+     * @param hasFocus
+     *            true, if the component has focus, otherwiese false.
+     * @return the initialized component.
+     */
+    public static synchronized AbstractComponent createSelectElement(
+        final String className, final POJOItem<?> item, final boolean readOnly,
+        final String propertyName, final IMenuItem[] values,
+        final boolean hasFocus) {
+
         AbstractComponent comp;
         if (readOnly) {
             comp = new Label();
@@ -777,6 +948,9 @@ public class LayoutHelper {
             ((Select) comp).setWriteThrough(false);
             ((Select) comp).setPropertyDataSource(item
                 .getItemProperty(propertyName));
+            if (hasFocus) {
+                ((Select) comp).focus();
+            }
             List<Field> attachedFields = attachedFieldsMap.get(className);
             if (attachedFields == null) {
                 attachedFields = new ArrayList<Field>();
@@ -805,11 +979,35 @@ public class LayoutHelper {
         final String className, final POJOItem<?> item, final boolean readOnly,
         final String propertyName) {
 
+        return createListElement(className, item, readOnly, propertyName, false);
+    }
+
+    /**
+     * Creates a select depending on its state.
+     * 
+     * @param className
+     *            the name of the calling class.
+     * @param item
+     *            an instance of POJOItem.
+     * 
+     * @param readOnly
+     *            can the values be changed.
+     * @param propertyName
+     *            the name of the binding property.
+     * @param hasFocus
+     *            true, if the component has focus, otherwiese false.
+     * @return the initialized component.
+     */
+    public static synchronized AbstractComponent createListElement(
+        final String className, final POJOItem<?> item, final boolean readOnly,
+        final String propertyName, final boolean hasFocus) {
+
         final AbstractComponent comp = new ListSelect();
         ((ListSelect) comp).setReadOnly(readOnly);
         ((ListSelect) comp).setPropertyDataSource(item
             .getItemProperty(propertyName));
         ((ListSelect) comp).setWriteThrough(false);
+        ((ListSelect) comp).focus();
         List<Field> attachedFields = attachedFieldsMap.get(className);
         if (attachedFields == null) {
             attachedFields = new ArrayList<Field>();
@@ -837,7 +1035,33 @@ public class LayoutHelper {
      */
     public static synchronized AbstractComponent createDateElement(
         final String className, final POJOItem<?> item, final boolean readOnly,
-        final String propertyName, int resolution) {
+        final String propertyName, final int resolution) {
+
+        return createDateElement(className, item, readOnly, propertyName,
+            resolution, false);
+    }
+
+    /**
+     * Creates a select depending on its state.
+     * 
+     * @param className
+     *            the name of the calling class.
+     * @param item
+     *            an instance of POJOItem.
+     * 
+     * @param readOnly
+     *            can the values be changed.
+     * @param propertyName
+     *            the name of the binding property.
+     * @param resolution
+     *            the resolution of the calendar.
+     * @param hasFocus
+     *            true, if the component has focus, otherwiese false.
+     * @return the initialized component.
+     */
+    public static synchronized AbstractComponent createDateElement(
+        final String className, final POJOItem<?> item, final boolean readOnly,
+        final String propertyName, final int resolution, final boolean hasFocus) {
 
         AbstractComponent comp;
         if (readOnly) {
@@ -851,6 +1075,9 @@ public class LayoutHelper {
             ((DateField) comp).setWriteThrough(false);
             ((DateField) comp).setPropertyDataSource(item
                 .getItemProperty(propertyName));
+            if (hasFocus) {
+                ((DateField) comp).focus();
+            }
             List<Field> attachedFields = attachedFieldsMap.get(className);
             if (attachedFields == null) {
                 attachedFields = new ArrayList<Field>();
@@ -883,11 +1110,42 @@ public class LayoutHelper {
         final String className, final POJOItem<?> item, final boolean readOnly,
         final String text, final String propertyName) {
 
+        return createCheckBoxElement(className, item, readOnly, text,
+            propertyName, false);
+    }
+
+    /**
+     * Creates a select depending on its state.
+     * 
+     * @param className
+     *            the name of the calling class.
+     * @param item
+     *            an instance of POJOItem.
+     * 
+     * @param readOnly
+     *            can the values be changed.
+     * @param text
+     *            the text of the checkbox.
+     * @param propertyName
+     *            the name of the binding property.
+     * @param resolution
+     *            the resolution of the calendar.
+     * @param hasFocus
+     *            true, if the component has focus, otherwiese false.
+     * @return the initialized component.
+     */
+    public static synchronized AbstractComponent createCheckBoxElement(
+        final String className, final POJOItem<?> item, final boolean readOnly,
+        final String text, final String propertyName, final boolean hasFocus) {
+
         AbstractComponent comp = new CheckBox(text);
         comp.setReadOnly(readOnly);
         ((CheckBox) comp).setWriteThrough(false);
         ((CheckBox) comp).setPropertyDataSource(item
             .getItemProperty(propertyName));
+        if (hasFocus) {
+            ((CheckBox) comp).focus();
+        }
         List<Field> attachedFields = attachedFieldsMap.get(className);
         if (attachedFields == null) {
             attachedFields = new ArrayList<Field>();
@@ -917,7 +1175,7 @@ public class LayoutHelper {
         final FormLayout form, final AbstractComponent comp,
         final String label, final int labelWidth, final int width,
         final int height, final boolean required) {
-        
+
         comp.setWidth(width + Constants.PX);
         form.addComponent(LayoutHelper.create(label, comp, labelWidth, height,
             required));
@@ -945,7 +1203,7 @@ public class LayoutHelper {
         final FormLayout form, final AbstractComponent comp,
         final String label, final int labelWidth, final int width,
         final int height, final boolean required, Button[] buttons) {
-     
+
         comp.setWidth(width + Constants.PX);
         form.addComponent(LayoutHelper.create(label, comp, labelWidth, height,
             required, buttons));
