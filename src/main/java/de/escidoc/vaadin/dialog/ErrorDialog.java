@@ -123,8 +123,8 @@ public class ErrorDialog extends Window implements Button.ClickListener {
         }
 
         TextField trace = new TextField();
-        trace.setRows(7);
-        trace.setColumns(80);
+        trace.setRows(Constants.NUMBER_OF_ROWS);
+        trace.setColumns(Constants.TEXT_WIDTH);
         trace.setValue(sb.toString());
         layout.addComponent(trace);
         button.addListener(this);
@@ -132,7 +132,7 @@ public class ErrorDialog extends Window implements Button.ClickListener {
     }
 
     @Override
-    public void buttonClick(ClickEvent event) {
+    public final void buttonClick(ClickEvent event) {
 
         mainWindow.removeWindow(ErrorDialog.this);
     }
