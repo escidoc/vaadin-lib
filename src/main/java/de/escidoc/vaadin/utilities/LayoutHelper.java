@@ -42,7 +42,7 @@ public final class LayoutHelper {
         // Utility classes should not have a public or default constructor.
     }
 
-    private final static Map<String, List<Field>> attachedFieldsMap =
+    private final static Map<String, List<Field>> ATTACHED_FIELDS_MAP =
         new HashMap<String, List<Field>>();
 
     /**
@@ -588,10 +588,10 @@ public final class LayoutHelper {
             if (hasFocus) {
                 ((TextField) comp).focus();
             }
-            List<Field> attachedFields = attachedFieldsMap.get(className);
+            List<Field> attachedFields = ATTACHED_FIELDS_MAP.get(className);
             if (attachedFields == null) {
                 attachedFields = new ArrayList<Field>();
-                attachedFieldsMap.put(className, attachedFields);
+                ATTACHED_FIELDS_MAP.put(className, attachedFields);
             }
             attachedFields.add((Field) comp);
         }
@@ -661,10 +661,10 @@ public final class LayoutHelper {
             if (hasFocus) {
                 ((Select) comp).focus();
             }
-            List<Field> attachedFields = attachedFieldsMap.get(className);
+            List<Field> attachedFields = ATTACHED_FIELDS_MAP.get(className);
             if (attachedFields == null) {
                 attachedFields = new ArrayList<Field>();
-                attachedFieldsMap.put(className, attachedFields);
+                ATTACHED_FIELDS_MAP.put(className, attachedFields);
             }
             attachedFields.add((Field) comp);
         }
@@ -735,10 +735,10 @@ public final class LayoutHelper {
             }
             ((Select) comp).setPropertyDataSource(item
                 .getItemProperty(propertyName));
-            List<Field> attachedFields = attachedFieldsMap.get(className);
+            List<Field> attachedFields = ATTACHED_FIELDS_MAP.get(className);
             if (attachedFields == null) {
                 attachedFields = new ArrayList<Field>();
-                attachedFieldsMap.put(className, attachedFields);
+                ATTACHED_FIELDS_MAP.put(className, attachedFields);
             }
             attachedFields.add((Field) comp);
         }
@@ -808,10 +808,10 @@ public final class LayoutHelper {
             if (hasFocus) {
                 ((NativeSelect) comp).focus();
             }
-            List<Field> attachedFields = attachedFieldsMap.get(className);
+            List<Field> attachedFields = ATTACHED_FIELDS_MAP.get(className);
             if (attachedFields == null) {
                 attachedFields = new ArrayList<Field>();
-                attachedFieldsMap.put(className, attachedFields);
+                ATTACHED_FIELDS_MAP.put(className, attachedFields);
             }
             attachedFields.add((Field) comp);
         }
@@ -880,10 +880,10 @@ public final class LayoutHelper {
             if (hasFocus) {
                 ((NativeSelect) comp).focus();
             }
-            List<Field> attachedFields = attachedFieldsMap.get(className);
+            List<Field> attachedFields = ATTACHED_FIELDS_MAP.get(className);
             if (attachedFields == null) {
                 attachedFields = new ArrayList<Field>();
-                attachedFieldsMap.put(className, attachedFields);
+                ATTACHED_FIELDS_MAP.put(className, attachedFields);
             }
             attachedFields.add((Field) comp);
         }
@@ -954,10 +954,10 @@ public final class LayoutHelper {
             if (hasFocus) {
                 ((Select) comp).focus();
             }
-            List<Field> attachedFields = attachedFieldsMap.get(className);
+            List<Field> attachedFields = ATTACHED_FIELDS_MAP.get(className);
             if (attachedFields == null) {
                 attachedFields = new ArrayList<Field>();
-                attachedFieldsMap.put(className, attachedFields);
+                ATTACHED_FIELDS_MAP.put(className, attachedFields);
             }
             attachedFields.add((Field) comp);
         }
@@ -1011,10 +1011,10 @@ public final class LayoutHelper {
             .getItemProperty(propertyName));
         ((ListSelect) comp).setWriteThrough(false);
         ((ListSelect) comp).focus();
-        List<Field> attachedFields = attachedFieldsMap.get(className);
+        List<Field> attachedFields = ATTACHED_FIELDS_MAP.get(className);
         if (attachedFields == null) {
             attachedFields = new ArrayList<Field>();
-            attachedFieldsMap.put(className, attachedFields);
+            ATTACHED_FIELDS_MAP.put(className, attachedFields);
         }
         attachedFields.add((Field) comp);
         return comp;
@@ -1081,10 +1081,10 @@ public final class LayoutHelper {
             if (hasFocus) {
                 ((DateField) comp).focus();
             }
-            List<Field> attachedFields = attachedFieldsMap.get(className);
+            List<Field> attachedFields = ATTACHED_FIELDS_MAP.get(className);
             if (attachedFields == null) {
                 attachedFields = new ArrayList<Field>();
-                attachedFieldsMap.put(className, attachedFields);
+                ATTACHED_FIELDS_MAP.put(className, attachedFields);
             }
             attachedFields.add((Field) comp);
         }
@@ -1149,10 +1149,10 @@ public final class LayoutHelper {
         if (hasFocus) {
             ((CheckBox) comp).focus();
         }
-        List<Field> attachedFields = attachedFieldsMap.get(className);
+        List<Field> attachedFields = ATTACHED_FIELDS_MAP.get(className);
         if (attachedFields == null) {
             attachedFields = new ArrayList<Field>();
-            attachedFieldsMap.put(className, attachedFields);
+            ATTACHED_FIELDS_MAP.put(className, attachedFields);
         }
         attachedFields.add((Field) comp);
         return comp;
@@ -1308,7 +1308,7 @@ public final class LayoutHelper {
      * @return
      */
     public static List<Field> getAttachedFields(String className) {
-        return attachedFieldsMap.get(className);
+        return ATTACHED_FIELDS_MAP.get(className);
     }
 
 }
