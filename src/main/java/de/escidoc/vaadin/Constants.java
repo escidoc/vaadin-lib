@@ -26,4 +26,19 @@ public class Constants {
 
     public static final String P = "</p>";
 
+    public static final String BLANK = "&nbsp;";
+
+    public static final String TWO_BLANKS = "&nbsp;&nbsp;";
+
+    public static final String RELATIVE_TOP_ASTERIX =
+        "&nbsp;<span style=\"color:red; position:relative; top:13px;\">*</span>";
+
+    public static final int WIDHT = 10;
+
+    public static final String OK = "OK";
+
+    public static final int ERROR_DIALOG_HEIGTH = 300;
+
+    public static final int ERROR_DIALOG_WIDTH = 600;
+
 }
