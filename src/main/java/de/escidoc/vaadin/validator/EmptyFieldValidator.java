@@ -12,7 +12,7 @@ import com.vaadin.ui.TextField;
  * @author ASP
  * 
  */
-public class EmptyFieldValidator {
+public final class EmptyFieldValidator {
 
     private EmptyFieldValidator() {
 

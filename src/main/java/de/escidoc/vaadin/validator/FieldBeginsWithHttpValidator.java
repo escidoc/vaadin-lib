@@ -10,7 +10,7 @@ import com.vaadin.ui.TextField;
  * @author ASP
  * 
  */
-public class FieldBeginsWithHttpValidator {
+public final class FieldBeginsWithHttpValidator {
 
     private FieldBeginsWithHttpValidator() {
 
