@@ -8,6 +8,11 @@ package de.escidoc.vaadin;
  * 
  */
 public class Constants {
+    
+    private Constants(){
+        // Find bugs....
+    }
+    
     public static final String CREATED_BY = "createdBy";
 
     public static final String CREATED_ON = "createdOn";
