@@ -41,4 +41,8 @@ public class Constants {
 
     public static final int ERROR_DIALOG_WIDTH = 600;
 
+    public static final int NUMBER_OF_ROWS = 7;
+
+    public static final int TEXT_WIDTH = 80;
+
 }
