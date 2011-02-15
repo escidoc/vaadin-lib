@@ -36,7 +36,7 @@ import de.escidoc.vaadin.interfaces.IMenuItem;
  * @author ASP
  * 
  */
-public class LayoutHelper {
+public final class LayoutHelper {
 
     private LayoutHelper() {
         // Utility classes should not have a public or default constructor.
@@ -67,8 +67,8 @@ public class LayoutHelper {
         hor.setHeight(Constants.DEFAULT_HEIGHT);
         hor.addComponent(new Label(" "));
         String text = Constants.P_ALIGN_RIGHT + label + Constants.P;
-        Label l;
-        hor.addComponent(l = new Label(text, Label.CONTENT_XHTML));
+        Label l = new Label(text, Label.CONTENT_XHTML);
+        hor.addComponent(l);
         l.setSizeUndefined();
         l.setWidth(width + Constants.PX);
         hor.setComponentAlignment(l, com.vaadin.ui.Alignment.MIDDLE_RIGHT);
@@ -76,11 +76,11 @@ public class LayoutHelper {
         if (required) {
             hor
                 .addComponent(new Label(
-                    "&nbsp;<span style=\"color:red; position:relative; top:13px;\">*</span>",
+                    Constants.RELATIVE_TOP_ASTERIX,
                     Label.CONTENT_XHTML));
         }
         else {
-            hor.addComponent(new Label("&nbsp;&nbsp;", Label.CONTENT_XHTML));
+            hor.addComponent(new Label(Constants.TWO_BLANKS, Label.CONTENT_XHTML));
         }
         hor.addComponent(comp);
         hor.setComponentAlignment(comp, Alignment.MIDDLE_RIGHT);
@@ -111,8 +111,8 @@ public class LayoutHelper {
         hor.setHeight(Constants.DEFAULT_HEIGHT);
         hor.addComponent(new Label(" "));
         String text = Constants.P_ALIGN_RIGHT + label + Constants.P;
-        Label l;
-        hor.addComponent(l = new Label(text, Label.CONTENT_XHTML));
+        Label l = new Label(text, Label.CONTENT_XHTML);
+        hor.addComponent(l);
         l.setSizeUndefined();
         l.setWidth(width + Constants.PX);
         hor.setComponentAlignment(l, Alignment.MIDDLE_RIGHT);
@@ -120,11 +120,11 @@ public class LayoutHelper {
         if (required) {
             hor
                 .addComponent(new Label(
-                    "&nbsp;<span style=\"color:red; position:relative; top:13px;\">*</span>",
+                    Constants.RELATIVE_TOP_ASTERIX,
                     Label.CONTENT_XHTML));
         }
         else {
-            hor.addComponent(new Label("&nbsp;&nbsp;", Label.CONTENT_XHTML));
+            hor.addComponent(new Label(Constants.TWO_BLANKS, Label.CONTENT_XHTML));
         }
         hor.addComponent(comp);
         hor.setComponentAlignment(comp, Alignment.MIDDLE_RIGHT);
@@ -158,8 +158,8 @@ public class LayoutHelper {
         hor.setHeight(height + Constants.PX);
         hor.addComponent(new Label(" "));
         String text = Constants.P_ALIGN_RIGHT + label + Constants.P;
-        Label l;
-        hor.addComponent(l = new Label(text, Label.CONTENT_XHTML));
+        Label l = new Label(text, Label.CONTENT_XHTML);
+        hor.addComponent(l);
         l.setSizeUndefined();
         l.setWidth(width + Constants.PX);
         hor.setComponentAlignment(l, Alignment.MIDDLE_RIGHT);
@@ -172,7 +172,7 @@ public class LayoutHelper {
                     Label.CONTENT_XHTML));
         }
         else {
-            hor.addComponent(new Label("&nbsp;&nbsp;", Label.CONTENT_XHTML));
+            hor.addComponent(new Label(Constants.TWO_BLANKS, Label.CONTENT_XHTML));
         }
         hor.addComponent(comp);
         hor.setComponentAlignment(comp, Alignment.MIDDLE_RIGHT);
@@ -207,8 +207,8 @@ public class LayoutHelper {
         hor.setHeight(height + Constants.PX);
         hor.addComponent(new Label(" "));
         String text = Constants.P_ALIGN_RIGHT + label + Constants.P;
-        Label l;
-        hor.addComponent(l = new Label(text, Label.CONTENT_XHTML));
+        Label l = new Label(text, Label.CONTENT_XHTML);
+        hor.addComponent(l);
         l.setSizeUndefined();
         l.setWidth(width + Constants.PX);
         hor.setComponentAlignment(l, Alignment.MIDDLE_RIGHT);
@@ -221,7 +221,7 @@ public class LayoutHelper {
                     Label.CONTENT_XHTML));
         }
         else {
-            hor.addComponent(new Label("&nbsp;&nbsp;", Label.CONTENT_XHTML));
+            hor.addComponent(new Label(Constants.TWO_BLANKS, Label.CONTENT_XHTML));
         }
         hor.addComponent(comp);
         hor.setComponentAlignment(comp, Alignment.MIDDLE_RIGHT);
@@ -244,7 +244,7 @@ public class LayoutHelper {
         // }
         // hor.addComponent(vl);
         HorizontalLayout hl = new HorizontalLayout();
-        Label la = new Label("&nbsp;", Label.CONTENT_XHTML);
+        Label la = new Label(Constants.BLANK, Label.CONTENT_XHTML);
         la.setSizeUndefined();
         la.setWidth(width + Constants.PX);
         hl.addComponent(la);
@@ -280,8 +280,8 @@ public class LayoutHelper {
         hor.setHeight(height + Constants.PX);
         hor.addComponent(new Label(" "));
         String text = Constants.P_ALIGN_RIGHT + label + Constants.P;
-        Label l;
-        hor.addComponent(l = new Label(text, Label.CONTENT_XHTML));
+        Label l = new Label(text, Label.CONTENT_XHTML);
+        hor.addComponent(l);
         l.setSizeUndefined();
         l.setWidth(width + Constants.PX);
         hor.setComponentAlignment(l, Alignment.MIDDLE_RIGHT);
@@ -293,7 +293,7 @@ public class LayoutHelper {
                     Label.CONTENT_XHTML));
         }
         else {
-            hor.addComponent(new Label("&nbsp;&nbsp;", Label.CONTENT_XHTML));
+            hor.addComponent(new Label(Constants.TWO_BLANKS, Label.CONTENT_XHTML));
         }
 
         Panel pan = new Panel();
@@ -350,36 +350,37 @@ public class LayoutHelper {
         hor.setHeight(Constants.DEFAULT_HEIGHT);
         hor.addComponent(new Label(" "));
         String text = Constants.P_ALIGN_RIGHT + labelLeft + Constants.P;
-        Label ll, lr;
-        hor.addComponent(ll = new Label(text, Label.CONTENT_XHTML));
+        Label ll = new Label(text, Label.CONTENT_XHTML); 
+        hor.addComponent(ll);
         ll.setSizeUndefined();
         ll.setWidth(widthLeft + Constants.PX);
         hor.setComponentAlignment(ll, Alignment.MIDDLE_RIGHT);
         if (required) {
             hor
                 .addComponent(new Label(
-                    "&nbsp;<span style=\"color:red; position:relative; top:13px;\">*</span>",
+                    Constants.RELATIVE_TOP_ASTERIX,
                     Label.CONTENT_XHTML));
         }
         else {
-            hor.addComponent(new Label("&nbsp;&nbsp;", Label.CONTENT_XHTML));
+            hor.addComponent(new Label(Constants.TWO_BLANKS, Label.CONTENT_XHTML));
         }
         hor.addComponent(compLeft);
         hor.setComponentAlignment(compLeft, Alignment.MIDDLE_RIGHT);
-        hor.addComponent(new Label("&nbsp;", Label.CONTENT_XHTML));
+        hor.addComponent(new Label(Constants.BLANK, Label.CONTENT_XHTML));
         String text2 = Constants.P_ALIGN_RIGHT + labelRight + Constants.P;
-        hor.addComponent(lr = new Label(text2, Label.CONTENT_XHTML));
+        Label lr = new Label(text2, Label.CONTENT_XHTML);
+        hor.addComponent(lr);
         lr.setSizeUndefined();
         lr.setWidth(widthRight + Constants.PX);
         hor.setComponentAlignment(lr, Alignment.MIDDLE_RIGHT);
         if (required) {
             hor
                 .addComponent(new Label(
-                    "&nbsp;<span style=\"color:red; position:relative; top:13px;\">*</span>",
+                    Constants.RELATIVE_TOP_ASTERIX,
                     Label.CONTENT_XHTML));
         }
         else {
-            hor.addComponent(new Label("&nbsp;&nbsp;", Label.CONTENT_XHTML));
+            hor.addComponent(new Label(Constants.TWO_BLANKS, Label.CONTENT_XHTML));
         }
         hor.addComponent(compRight);
         hor.setComponentAlignment(compRight, Alignment.MIDDLE_RIGHT);
@@ -407,36 +408,37 @@ public class LayoutHelper {
         hor.setHeight(Constants.DEFAULT_HEIGHT);
         hor.addComponent(new Label(" "));
         String text = Constants.P_ALIGN_RIGHT + labelLeft + Constants.P;
-        Label ll, lr;
-        hor.addComponent(ll = new Label(text, Label.CONTENT_XHTML));
+        Label ll = new Label(text, Label.CONTENT_XHTML);
+        hor.addComponent(ll);
         ll.setSizeUndefined();
         ll.setWidth(widthLeft + Constants.PX);
         hor.setComponentAlignment(ll, Alignment.MIDDLE_RIGHT);
         if (required) {
             hor
                 .addComponent(new Label(
-                    "&nbsp;<span style=\"color:red; position:relative; top:13px;\">*</span>",
+                    Constants.RELATIVE_TOP_ASTERIX,
                     Label.CONTENT_XHTML));
         }
         else {
-            hor.addComponent(new Label("&nbsp;&nbsp;", Label.CONTENT_XHTML));
+            hor.addComponent(new Label(Constants.TWO_BLANKS, Label.CONTENT_XHTML));
         }
         hor.addComponent(compLeft);
         hor.setComponentAlignment(compLeft, Alignment.BOTTOM_RIGHT);
-        hor.addComponent(new Label("&nbsp;", Label.CONTENT_XHTML));
+        hor.addComponent(new Label(Constants.BLANK, Label.CONTENT_XHTML));
         String text2 = Constants.P_ALIGN_RIGHT + labelRight + Constants.P;
-        hor.addComponent(lr = new Label(text2, Label.CONTENT_XHTML));
+        Label lr = new Label(text2, Label.CONTENT_XHTML);
+        hor.addComponent(lr);
         lr.setSizeUndefined();
         lr.setWidth(widthRight + Constants.PX);
         hor.setComponentAlignment(lr, Alignment.BOTTOM_RIGHT);
         if (required) {
             hor
                 .addComponent(new Label(
-                    "&nbsp;<span style=\"color:red; position:relative; top:13px;\">*</span>",
+                    Constants.RELATIVE_TOP_ASTERIX,
                     Label.CONTENT_XHTML));
         }
         else {
-            hor.addComponent(new Label("&nbsp;&nbsp;", Label.CONTENT_XHTML));
+            hor.addComponent(new Label(Constants.TWO_BLANKS, Label.CONTENT_XHTML));
         }
         hor.addComponent(compRight);
         hor.setComponentAlignment(compRight, Alignment.MIDDLE_RIGHT);
@@ -470,36 +472,37 @@ public class LayoutHelper {
         hor.setHeight(Constants.DEFAULT_HEIGHT);
         hor.addComponent(new Label(" "));
         String text = Constants.P_ALIGN_RIGHT + labelLeft + Constants.P;
-        Label ll, lr;
-        hor.addComponent(ll = new Label(text, Label.CONTENT_XHTML));
+        Label ll = new Label(text, Label.CONTENT_XHTML);
+        hor.addComponent(ll);
         ll.setSizeUndefined();
         ll.setWidth(width + Constants.PX);
         hor.setComponentAlignment(ll, Alignment.MIDDLE_RIGHT);
         if (required) {
             hor
                 .addComponent(new Label(
-                    "&nbsp;<span style=\"color:red; position:relative; top:13px;\">*</span>",
+                    Constants.RELATIVE_TOP_ASTERIX,
                     Label.CONTENT_XHTML));
         }
         else {
-            hor.addComponent(new Label("&nbsp;&nbsp;", Label.CONTENT_XHTML));
+            hor.addComponent(new Label(Constants.TWO_BLANKS, Label.CONTENT_XHTML));
         }
         hor.addComponent(compLeft);
         hor.setComponentAlignment(compLeft, Alignment.MIDDLE_RIGHT);
-        hor.addComponent(new Label("&nbsp;", Label.CONTENT_XHTML));
+        hor.addComponent(new Label(Constants.BLANK, Label.CONTENT_XHTML));
         String text2 = Constants.P_ALIGN_RIGHT + labelRight + Constants.P;
-        hor.addComponent(lr = new Label(text2, Label.CONTENT_XHTML));
+        Label lr = new Label(text2, Label.CONTENT_XHTML);
+        hor.addComponent(lr);
         lr.setSizeUndefined();
         lr.setWidth(width + Constants.PX);
         hor.setComponentAlignment(lr, Alignment.MIDDLE_RIGHT);
         if (required) {
             hor
                 .addComponent(new Label(
-                    "&nbsp;<span style=\"color:red; position:relative; top:13px;\">*</span>",
+                    Constants.RELATIVE_TOP_ASTERIX,
                     Label.CONTENT_XHTML));
         }
         else {
-            hor.addComponent(new Label("&nbsp;&nbsp;", Label.CONTENT_XHTML));
+            hor.addComponent(new Label(Constants.TWO_BLANKS, Label.CONTENT_XHTML));
         }
         hor.addComponent(compRight);
         hor.setComponentAlignment(compRight, Alignment.MIDDLE_RIGHT);
@@ -1278,8 +1281,8 @@ public class LayoutHelper {
         hor.setHeight("400px");
         hor.addComponent(new Label(" "));
         String text = Constants.P_ALIGN_RIGHT + label + Constants.P;
-        Label l;
-        hor.addComponent(l = new Label(text, Label.CONTENT_XHTML));
+        Label l = new Label(text, Label.CONTENT_XHTML);
+        hor.addComponent(l);
         l.setSizeUndefined();
         l.setWidth(width + Constants.PX);
         hor.setComponentAlignment(l, com.vaadin.ui.Alignment.MIDDLE_RIGHT);
@@ -1287,11 +1290,11 @@ public class LayoutHelper {
         if (required) {
             hor
                 .addComponent(new Label(
-                    "&nbsp;<span style=\"color:red; position:relative; top:13px;\">*</span>",
+                    Constants.RELATIVE_TOP_ASTERIX,
                     Label.CONTENT_XHTML));
         }
         else {
-            hor.addComponent(new Label("&nbsp;&nbsp;", Label.CONTENT_XHTML));
+            hor.addComponent(new Label(Constants.TWO_BLANKS, Label.CONTENT_XHTML));
         }
         hor.addComponent(comp);
         hor.setComponentAlignment(comp, Alignment.MIDDLE_RIGHT);

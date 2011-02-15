@@ -6,7 +6,7 @@ import com.vaadin.ui.Tree;
  * @author ASP
  * 
  */
-public class TreeHelper {
+public final class TreeHelper {
 
     private TreeHelper() {
         // Utility classes should not have a public or default constructor.

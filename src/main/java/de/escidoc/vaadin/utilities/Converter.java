@@ -17,7 +17,7 @@ import de.escidoc.vaadin.Constants;
  * @author ASP
  * 
  */
-public class Converter {
+public final class Converter {
 
     private Converter() {
         // Utility classes should not have a public or default constructor.
@@ -43,11 +43,10 @@ public class Converter {
      *            the return object from a tree, combobox, list, ....
      * @return a list of selected objects.
      */
-    @SuppressWarnings("unchecked")
     public static synchronized List<Object> getSelected(Object o) {
         final List<Object> selected = new ArrayList<Object>();
         if (o instanceof Set) {
-            selected.addAll((Set) o); // More than one result...
+            selected.addAll((Set<?>) o); // More than one result...
         }
         else { // Just one selected.
             selected.add(o);
