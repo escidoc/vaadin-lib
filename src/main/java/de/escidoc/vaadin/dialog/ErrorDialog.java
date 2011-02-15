@@ -7,6 +7,7 @@ import com.vaadin.ui.Label;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.Window;
 
+import de.escidoc.vaadin.Constants;
 import de.escidoc.vaadin.utilities.LayoutHelper;
 
 /**
@@ -15,6 +16,7 @@ import de.escidoc.vaadin.utilities.LayoutHelper;
  * 
  */
 public class ErrorDialog extends Window implements Button.ClickListener {
+
     private static final long serialVersionUID = 6255824594582824620L;
 
     private final FormLayout layout = new FormLayout();
@@ -34,7 +36,8 @@ public class ErrorDialog extends Window implements Button.ClickListener {
     public ErrorDialog(final Window mainWindow, final String caption,
         final String errorMessage) {
 
-        this(mainWindow, caption, errorMessage, 600, 300);
+        this(mainWindow, caption, errorMessage, Constants.ERROR_DIALOG_WIDTH,
+            Constants.ERROR_DIALOG_HEIGTH);
     }
 
     /**
@@ -55,14 +58,15 @@ public class ErrorDialog extends Window implements Button.ClickListener {
         final String errorMessage, int width, int height) {
 
         this.mainWindow = mainWindow;
-        super.setWidth(width + "px");
-        super.setHeight(height + "px");
+        super.setWidth(width + Constants.PX);
+        super.setHeight(height + Constants.PX);
         super.setCaption(caption);
         super.setModal(true);
         layout.addComponent(LayoutHelper.create("", new Label(errorMessage),
-            10, false));
-        Button button = new Button("OK");
-        layout.addComponent(LayoutHelper.create("", button, 10, false));
+            Constants.WIDHT, false));
+        Button button = new Button(Constants.OK);
+        layout.addComponent(LayoutHelper.create("", button, Constants.WIDHT,
+            false));
         button.addListener(this);
         super.addComponent(layout);
     }
@@ -80,7 +84,8 @@ public class ErrorDialog extends Window implements Button.ClickListener {
     public ErrorDialog(final Window mainWindow, final String caption,
         final Exception exception) {
 
-        this(mainWindow, caption, exception, 600, 300);
+        this(mainWindow, caption, exception, Constants.ERROR_DIALOG_WIDTH,
+            Constants.ERROR_DIALOG_HEIGTH);
     }
 
     /**
@@ -101,15 +106,15 @@ public class ErrorDialog extends Window implements Button.ClickListener {
         final Exception exception, int width, int height) {
 
         this.mainWindow = mainWindow;
-        super.setWidth(width + "px");
-        super.setHeight(height + "px");
+        super.setWidth(width + Constants.PX);
+        super.setHeight(height + Constants.PX);
         super.setCaption(caption);
 
         super.setModal(true);
         layout.addComponent(LayoutHelper.create("",
-            new Label(exception.getMessage()), 10, false));
-        Button button = new Button("OK");
-        layout.addComponent(LayoutHelper.create("", button, 10, false));
+            new Label(exception.getMessage()), Constants.WIDHT, false));
+        Button button = new Button(Constants.OK);
+        layout.addComponent(LayoutHelper.create("", button, Constants.WIDHT, false));
 
         StackTraceElement[] elements = exception.getStackTrace();
         StringBuilder sb = new StringBuilder();
