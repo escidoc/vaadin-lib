@@ -7,7 +7,7 @@ package de.escidoc.vaadin;
  * @author ASP
  * 
  */
-public class Constants {
+public final class Constants {
     
     private Constants(){
         // Find bugs....
