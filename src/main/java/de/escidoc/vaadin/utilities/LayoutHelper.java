@@ -14,6 +14,7 @@ import com.vaadin.ui.Accordion;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.CheckBox;
+import com.vaadin.ui.ComboBox;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.DateField;
 import com.vaadin.ui.Field;
@@ -769,6 +770,31 @@ public final class LayoutHelper {
             propertyName, values, false);
     }
 
+
+    /**
+     * Creates a native select depending on its state.
+     * 
+     * @param className
+     *            the name of the calling class.
+     * @param item
+     *            an instance of POJOItem.
+     * 
+     * @param readOnly
+     *            can the values be changed.
+     * @param propertyName
+     *            the name of the binding property.
+     * @param values
+     *            the values to display in the select element.
+     * @return the initialized component.
+     */
+    public static synchronized AbstractComponent createComboBoxElement(
+        final String className, final POJOItem<?> item, final boolean readOnly,
+        final String propertyName, final Enum<?>[] values) {
+
+        return createComboBoxElement(className, item, readOnly,
+            propertyName, values, false);
+    }
+    
     /**
      * Creates a native select depending on its state.
      * 
@@ -817,7 +843,55 @@ public final class LayoutHelper {
         }
         return comp;
     }
+    /**
+     * Creates a native select depending on its state.
+     * 
+     * @param className
+     *            the name of the calling class.
+     * @param item
+     *            an instance of POJOItem.
+     * 
+     * @param readOnly
+     *            can the values be changed.
+     * @param propertyName
+     *            the name of the binding property.
+     * @param hasFocus
+     *            true, if the component has focus, otherwiese false.
+     * @param values
+     *            the values to display in the select element.
+     * @return the initialized component.
+     */
+    public static synchronized AbstractComponent createComboBoxElement(
+        final String className, final POJOItem<?> item, final boolean readOnly,
+        final String propertyName, final Enum<?>[] values, boolean hasFocus) {
 
+        AbstractComponent comp;
+        if (readOnly) {
+            comp = new Label();
+            ((Label) comp).setPropertyDataSource(item
+                .getItemProperty(propertyName));
+        }
+        else {
+            comp = new ComboBox();
+            for (final Enum<?> theItem : values) {
+                ((ComboBox) comp).addItem(theItem);
+            }
+            ((ComboBox) comp).setWriteThrough(false);
+            ((ComboBox) comp).setPropertyDataSource(item
+                .getItemProperty(propertyName));
+            if (hasFocus) {
+                ((ComboBox) comp).focus();
+            }
+            List<Field> attachedFields = ATTACHED_FIELDS_MAP.get(className);
+            if (attachedFields == null) {
+                attachedFields = new ArrayList<Field>();
+                ATTACHED_FIELDS_MAP.put(className, attachedFields);
+            }
+            attachedFields.add((Field) comp);
+        }
+        return comp;
+    }
+    
     /**
      * Creates a native select depending on its state.
      * 
@@ -842,6 +916,29 @@ public final class LayoutHelper {
             propertyName, values, false);
     }
 
+    /**
+     * Creates a native select depending on its state.
+     * 
+     * @param className
+     *            the name of the calling class.
+     * @param item
+     *            an instance of POJOItem.
+     * 
+     * @param readOnly
+     *            can the values be changed.
+     * @param propertyName
+     *            the name of the binding property.
+     * @param values
+     *            the values to display in the select element.
+     * @return the initialized component.
+     */
+    public static synchronized AbstractComponent createComboBoxElement(
+        final String className, final POJOItem<?> item, final boolean readOnly,
+        final String propertyName, final IMenuItem[] values) {
+
+        return createComboBoxElement(className, item, readOnly,
+            propertyName, values, false);
+    }
     /**
      * Creates a native select depending on its state.
      * 
@@ -889,7 +986,54 @@ public final class LayoutHelper {
         }
         return comp;
     }
+    
+    /**
+     * Creates a native select depending on its state.
+     * 
+     * @param className
+     *            the name of the calling class.
+     * @param item
+     *            an instance of POJOItem.
+     * 
+     * @param readOnly
+     *            can the values be changed.
+     * @param propertyName
+     *            the name of the binding property.
+     * @param values
+     *            the values to display in the select element.
+     * @return the initialized component.
+     */
+    public static synchronized AbstractComponent createComboBoxElement(
+        final String className, final POJOItem<?> item, final boolean readOnly,
+        final String propertyName, final IMenuItem[] values,
+        final boolean hasFocus) {
 
+        AbstractComponent comp;
+        if (readOnly) {
+            comp = new Label();
+            ((Label) comp).setPropertyDataSource(item
+                .getItemProperty(propertyName));
+        }
+        else {
+            comp = new ComboBox();
+            for (final IMenuItem theItem : values) {
+                ((ComboBox) comp).addItem(theItem);
+            }
+            ((ComboBox) comp).setWriteThrough(false);
+            ((ComboBox) comp).setPropertyDataSource(item
+                .getItemProperty(propertyName));
+            if (hasFocus) {
+                ((ComboBox) comp).focus();
+            }
+            List<Field> attachedFields = ATTACHED_FIELDS_MAP.get(className);
+            if (attachedFields == null) {
+                attachedFields = new ArrayList<Field>();
+                ATTACHED_FIELDS_MAP.put(className, attachedFields);
+            }
+            attachedFields.add((Field) comp);
+        }
+        return comp;
+    }
     /**
      * Creates a select depending on its state.
      * 
