@@ -5,7 +5,7 @@
 	<artifactId>VaadinLib</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<name>VaadinLib</name>
-	<url>http://maven.apache.org</url>
+	<url>http://www.escidoc.org</url>
 	<description>A library with helper classes and interface for a much more simpler usage of vaadin.</description>
 
 	<properties>
