@@ -1,9 +1,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>de.escidoc.vaadin.utilities</groupId>
+	<groupId>de.escidoc.vaadin</groupId>
 	<artifactId>VaadinLib</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<name>VaadinLib</name>
 	<url>http://www.escidoc.org</url>
 	<description>A library with helper classes and interface for a much more simpler usage of vaadin.</description>
@@ -173,7 +173,7 @@
  		</plugins>
 		<!--  		<finalName>${project.artifactId}-${Major}.${Minor}.${Release}-b${BUILD_NUMBER}</finalName>
 		-->
-		<finalName>${project.artifactId}-${Major}.${Minor}.${Release}</finalName>
+		<finalName>${project.artifactId}-${Major}.${Minor}.${Release}-SNAPSHOT</finalName>
 	</build>
 </project>
   
